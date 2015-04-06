@@ -1,0 +1,411 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261BB1AD2F02C00D62313 /* AppDelegate.swift */; };
+		793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 793261BD1AD2F02D00D62313 /* Images.xcassets */; };
+		793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793261BF1AD2F02E00D62313 /* MainMenu.xib */; };
+		793261CD1AD2F03000D62313 /* FastCaptureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261CC1AD2F03000D62313 /* FastCaptureTests.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		793261C71AD2F02E00D62313 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 793261AE1AD2F02900D62313 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 793261B51AD2F02A00D62313;
+			remoteInfo = FastCapture;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		793261B61AD2F02A00D62313 /* FastCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		793261BA1AD2F02B00D62313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		793261BB1AD2F02C00D62313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		793261BD1AD2F02D00D62313 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		793261C01AD2F02E00D62313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		793261C61AD2F02E00D62313 /* FastCaptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastCaptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		793261CB1AD2F02F00D62313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		793261CC1AD2F03000D62313 /* FastCaptureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastCaptureTests.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		793261B31AD2F02A00D62313 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		793261C31AD2F02E00D62313 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		793261AD1AD2F02900D62313 = {
+			isa = PBXGroup;
+			children = (
+				793261B81AD2F02A00D62313 /* FastCapture */,
+				793261C91AD2F02E00D62313 /* FastCaptureTests */,
+				793261B71AD2F02A00D62313 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		793261B71AD2F02A00D62313 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				793261B61AD2F02A00D62313 /* FastCapture.app */,
+				793261C61AD2F02E00D62313 /* FastCaptureTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		793261B81AD2F02A00D62313 /* FastCapture */ = {
+			isa = PBXGroup;
+			children = (
+				793261BB1AD2F02C00D62313 /* AppDelegate.swift */,
+				793261BD1AD2F02D00D62313 /* Images.xcassets */,
+				793261BF1AD2F02E00D62313 /* MainMenu.xib */,
+				793261B91AD2F02B00D62313 /* Supporting Files */,
+			);
+			path = FastCapture;
+			sourceTree = "<group>";
+		};
+		793261B91AD2F02B00D62313 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				793261BA1AD2F02B00D62313 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		793261C91AD2F02E00D62313 /* FastCaptureTests */ = {
+			isa = PBXGroup;
+			children = (
+				793261CC1AD2F03000D62313 /* FastCaptureTests.swift */,
+				793261CA1AD2F02F00D62313 /* Supporting Files */,
+			);
+			path = FastCaptureTests;
+			sourceTree = "<group>";
+		};
+		793261CA1AD2F02F00D62313 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				793261CB1AD2F02F00D62313 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		793261B51AD2F02A00D62313 /* FastCapture */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 793261D01AD2F03000D62313 /* Build configuration list for PBXNativeTarget "FastCapture" */;
+			buildPhases = (
+				793261B21AD2F02A00D62313 /* Sources */,
+				793261B31AD2F02A00D62313 /* Frameworks */,
+				793261B41AD2F02A00D62313 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FastCapture;
+			productName = FastCapture;
+			productReference = 793261B61AD2F02A00D62313 /* FastCapture.app */;
+			productType = "com.apple.product-type.application";
+		};
+		793261C51AD2F02E00D62313 /* FastCaptureTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 793261D31AD2F03000D62313 /* Build configuration list for PBXNativeTarget "FastCaptureTests" */;
+			buildPhases = (
+				793261C21AD2F02E00D62313 /* Sources */,
+				793261C31AD2F02E00D62313 /* Frameworks */,
+				793261C41AD2F02E00D62313 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				793261C81AD2F02E00D62313 /* PBXTargetDependency */,
+			);
+			name = FastCaptureTests;
+			productName = FastCaptureTests;
+			productReference = 793261C61AD2F02E00D62313 /* FastCaptureTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		793261AE1AD2F02900D62313 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = "Francisco Gonçalves";
+				TargetAttributes = {
+					793261B51AD2F02A00D62313 = {
+						CreatedOnToolsVersion = 6.3;
+					};
+					793261C51AD2F02E00D62313 = {
+						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 793261B51AD2F02A00D62313;
+					};
+				};
+			};
+			buildConfigurationList = 793261B11AD2F02900D62313 /* Build configuration list for PBXProject "FastCapture" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 793261AD1AD2F02900D62313;
+			productRefGroup = 793261B71AD2F02A00D62313 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				793261B51AD2F02A00D62313 /* FastCapture */,
+				793261C51AD2F02E00D62313 /* FastCaptureTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		793261B41AD2F02A00D62313 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */,
+				793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		793261C41AD2F02E00D62313 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		793261B21AD2F02A00D62313 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		793261C21AD2F02E00D62313 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				793261CD1AD2F03000D62313 /* FastCaptureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		793261C81AD2F02E00D62313 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 793261B51AD2F02A00D62313 /* FastCapture */;
+			targetProxy = 793261C71AD2F02E00D62313 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		793261BF1AD2F02E00D62313 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				793261C01AD2F02E00D62313 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		793261CE1AD2F03000D62313 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		793261CF1AD2F03000D62313 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.10;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		793261D11AD2F03000D62313 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FastCapture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		793261D21AD2F03000D62313 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = FastCapture/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		793261D41AD2F03000D62313 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FastCaptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FastCapture.app/Contents/MacOS/FastCapture";
+			};
+			name = Debug;
+		};
+		793261D51AD2F03000D62313 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = FastCaptureTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FastCapture.app/Contents/MacOS/FastCapture";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		793261B11AD2F02900D62313 /* Build configuration list for PBXProject "FastCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				793261CE1AD2F03000D62313 /* Debug */,
+				793261CF1AD2F03000D62313 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		793261D01AD2F03000D62313 /* Build configuration list for PBXNativeTarget "FastCapture" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				793261D11AD2F03000D62313 /* Debug */,
+				793261D21AD2F03000D62313 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		793261D31AD2F03000D62313 /* Build configuration list for PBXNativeTarget "FastCaptureTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				793261D41AD2F03000D62313 /* Debug */,
+				793261D51AD2F03000D62313 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 793261AE1AD2F02900D62313 /* Project object */;
+}
