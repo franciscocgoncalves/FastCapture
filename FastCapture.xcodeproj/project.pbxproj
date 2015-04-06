@@ -7,10 +7,21 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		26A1034FC46574020FA021BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868F9CBD953A3D011E393F4D /* libPods.a */; };
 		793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261BB1AD2F02C00D62313 /* AppDelegate.swift */; };
 		793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 793261BD1AD2F02D00D62313 /* Images.xcassets */; };
 		793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793261BF1AD2F02E00D62313 /* MainMenu.xib */; };
 		793261CD1AD2F03000D62313 /* FastCaptureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261CC1AD2F03000D62313 /* FastCaptureTests.swift */; };
+		793261D71AD2F09800D62313 /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793261D61AD2F09800D62313 /* Panel.xib */; };
+		793261DB1AD2F0C100D62313 /* ScreenCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261D91AD2F0C100D62313 /* ScreenCapture.swift */; };
+		793261DC1AD2F0C100D62313 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DA1AD2F0C100D62313 /* User.swift */; };
+		793261E21AD2F0FD00D62313 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DE1AD2F0FD00D62313 /* BackgroundView.swift */; };
+		793261E31AD2F0FD00D62313 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DF1AD2F0FD00D62313 /* Panel.swift */; };
+		793261E41AD2F0FD00D62313 /* PanelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E01AD2F0FD00D62313 /* PanelBar.swift */; };
+		793261E51AD2F0FD00D62313 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E11AD2F0FD00D62313 /* StatusItemView.swift */; };
+		793261E91AD2F11800D62313 /* MenubarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E71AD2F11800D62313 /* MenubarController.swift */; };
+		793261EA1AD2F11800D62313 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E81AD2F11800D62313 /* PanelController.swift */; };
+		793261EC1AD2F12000D62313 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 793261EB1AD2F12000D62313 /* UserDefaults.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -32,6 +43,20 @@
 		793261C61AD2F02E00D62313 /* FastCaptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastCaptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		793261CB1AD2F02F00D62313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		793261CC1AD2F03000D62313 /* FastCaptureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastCaptureTests.swift; sourceTree = "<group>"; };
+		793261D61AD2F09800D62313 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Panel.xib; sourceTree = "<group>"; };
+		793261D91AD2F0C100D62313 /* ScreenCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenCapture.swift; sourceTree = "<group>"; };
+		793261DA1AD2F0C100D62313 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		793261DE1AD2F0FD00D62313 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
+		793261DF1AD2F0FD00D62313 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
+		793261E01AD2F0FD00D62313 /* PanelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBar.swift; sourceTree = "<group>"; };
+		793261E11AD2F0FD00D62313 /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
+		793261E71AD2F11800D62313 /* MenubarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenubarController.swift; sourceTree = "<group>"; };
+		793261E81AD2F11800D62313 /* PanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
+		793261EB1AD2F12000D62313 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
+		793261F11AD2F19200D62313 /* FastCapture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FastCapture-Bridging-Header.h"; sourceTree = "<group>"; };
+		868F9CBD953A3D011E393F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8CE84CC38DCE99104B21554A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		B28DD3729FB321E85FAEBA13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +64,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				26A1034FC46574020FA021BA /* libPods.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -52,12 +78,22 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FBF27D00B4E8A383E880D84 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				868F9CBD953A3D011E393F4D /* libPods.a */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		793261AD1AD2F02900D62313 = {
 			isa = PBXGroup;
 			children = (
 				793261B81AD2F02A00D62313 /* FastCapture */,
 				793261C91AD2F02E00D62313 /* FastCaptureTests */,
 				793261B71AD2F02A00D62313 /* Products */,
+				BD16A534F511EF379E71BFA7 /* Pods */,
+				4FBF27D00B4E8A383E880D84 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +110,14 @@
 			isa = PBXGroup;
 			children = (
 				793261BB1AD2F02C00D62313 /* AppDelegate.swift */,
+				793261D81AD2F0A200D62313 /* Model */,
 				793261BD1AD2F02D00D62313 /* Images.xcassets */,
+				793261E61AD2F0FF00D62313 /* Controllers */,
+				793261DD1AD2F0DC00D62313 /* Views */,
 				793261BF1AD2F02E00D62313 /* MainMenu.xib */,
+				793261D61AD2F09800D62313 /* Panel.xib */,
 				793261B91AD2F02B00D62313 /* Supporting Files */,
+				793261F11AD2F19200D62313 /* FastCapture-Bridging-Header.h */,
 			);
 			path = FastCapture;
 			sourceTree = "<group>";
@@ -84,6 +125,7 @@
 		793261B91AD2F02B00D62313 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				793261EB1AD2F12000D62313 /* UserDefaults.plist */,
 				793261BA1AD2F02B00D62313 /* Info.plist */,
 			);
 			name = "Supporting Files";
@@ -106,6 +148,44 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		793261D81AD2F0A200D62313 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				793261D91AD2F0C100D62313 /* ScreenCapture.swift */,
+				793261DA1AD2F0C100D62313 /* User.swift */,
+			);
+			name = Model;
+			sourceTree = "<group>";
+		};
+		793261DD1AD2F0DC00D62313 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				793261DE1AD2F0FD00D62313 /* BackgroundView.swift */,
+				793261DF1AD2F0FD00D62313 /* Panel.swift */,
+				793261E01AD2F0FD00D62313 /* PanelBar.swift */,
+				793261E11AD2F0FD00D62313 /* StatusItemView.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		793261E61AD2F0FF00D62313 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				793261E71AD2F11800D62313 /* MenubarController.swift */,
+				793261E81AD2F11800D62313 /* PanelController.swift */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		BD16A534F511EF379E71BFA7 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				8CE84CC38DCE99104B21554A /* Pods.debug.xcconfig */,
+				B28DD3729FB321E85FAEBA13 /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -113,9 +193,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 793261D01AD2F03000D62313 /* Build configuration list for PBXNativeTarget "FastCapture" */;
 			buildPhases = (
+				C9409D531DB407B4FF1B1178 /* Check Pods Manifest.lock */,
 				793261B21AD2F02A00D62313 /* Sources */,
 				793261B31AD2F02A00D62313 /* Frameworks */,
 				793261B41AD2F02A00D62313 /* Resources */,
+				9CD795ECE7AF5EFA06401CC6 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -186,8 +268,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				793261D71AD2F09800D62313 /* Panel.xib in Resources */,
 				793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */,
 				793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */,
+				793261EC1AD2F12000D62313 /* UserDefaults.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -200,12 +284,53 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		9CD795ECE7AF5EFA06401CC6 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C9409D531DB407B4FF1B1178 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		793261B21AD2F02A00D62313 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				793261E91AD2F11800D62313 /* MenubarController.swift in Sources */,
+				793261DB1AD2F0C100D62313 /* ScreenCapture.swift in Sources */,
+				793261E31AD2F0FD00D62313 /* Panel.swift in Sources */,
+				793261EA1AD2F11800D62313 /* PanelController.swift in Sources */,
+				793261E41AD2F0FD00D62313 /* PanelBar.swift in Sources */,
+				793261E51AD2F0FD00D62313 /* StatusItemView.swift in Sources */,
 				793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */,
+				793261E21AD2F0FD00D62313 /* BackgroundView.swift in Sources */,
+				793261DC1AD2F0C100D62313 /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -321,23 +446,38 @@
 		};
 		793261D11AD2F03000D62313 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 8CE84CC38DCE99104B21554A /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FastCapture",
+				);
 				INFOPLIST_FILE = FastCapture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FastCapture/FastCapture-Bridging-Header.h";
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
 		793261D21AD2F03000D62313 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = B28DD3729FB321E85FAEBA13 /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CLANG_ENABLE_MODULES = YES;
 				COMBINE_HIDPI_IMAGES = YES;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/FastCapture",
+				);
 				INFOPLIST_FILE = FastCapture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "FastCapture/FastCapture-Bridging-Header.h";
 			};
 			name = Release;
 		};
@@ -396,6 +536,7 @@
 				793261D21AD2F03000D62313 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		793261D31AD2F03000D62313 /* Build configuration list for PBXNativeTarget "FastCaptureTests" */ = {
 			isa = XCConfigurationList;
@@ -404,6 +545,7 @@
 				793261D51AD2F03000D62313 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
