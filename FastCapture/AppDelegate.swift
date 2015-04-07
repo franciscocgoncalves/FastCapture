@@ -27,13 +27,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     
     //MARK: - NSApplicationDelegate
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        //        let appDomain = NSBundle.mainBundle().bundleIdentifier!
-        //        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        //let appDomain = NSBundle.mainBundle().bundleIdentifier!
+        //NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
         
-        //        if !NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") {
-        //            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLaunchedOnce")
-        //            setupDefaults()
-        //        }
+        if !NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLaunchedOnce")
+            setupDefaults()
+        }
+                
+        ScreenCapture.sharedInstance.createDirectory()
         
         ScreenCapture.sharedInstance.readDirectory(nil)
         
