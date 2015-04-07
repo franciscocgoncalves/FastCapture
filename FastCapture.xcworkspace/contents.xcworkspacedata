@@ -2,12 +2,12 @@
 <Workspace
    version = "1.0">
    <FileRef
-      location = "group:README.md">
+      location = "group:FastCapture.xcodeproj">
    </FileRef>
    <FileRef
-      location = "group:LICENSE">
+      location = "group:Podfile">
    </FileRef>
    <FileRef
-      location = "group:Project/EonilFileSystemEvents.xcodeproj">
+      location = "group:Pods/Pods.xcodeproj">
    </FileRef>
 </Workspace>
