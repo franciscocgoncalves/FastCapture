@@ -59,7 +59,8 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         
         var panel: NSPanel = self.window as! NSPanel
         panel.acceptsMouseMovedEvents = true
-        panel.level = Int(CGWindowLevelKey(Int32(kCGPopUpMenuWindowLevelKey)))
+        panel.becomeKeyWindow()
+        panel.floatingPanel = true
         panel.opaque = false
         panel.backgroundColor = NSColor.clearColor()
     }
@@ -76,7 +77,6 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         
         let arrowHeight = CGFloat(Float(ARROW_HEIGHT))
         if (NSMaxX(panelRect) > (NSMaxX(screenRect) - arrowHeight)) {
-            println("entrei")
             panelRect.origin.x -= NSMaxX(panelRect) - (NSMaxX(screenRect) - arrowHeight)
         }
         
@@ -85,10 +85,11 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         
         self.backgroundView!.arrowX = Int(panelX);
 
-        NSApp.activateIgnoringOtherApps(false)
         panel.alphaValue = 0
-        panel.setFrame(statusRect, display: false)
+        panel.setFrame(NSRect(x: panelRect.minX, y: panelRect.maxY, width: panelRect.width, height: 0), display: true)
         panel.makeKeyAndOrderFront(self)
+        
+        setupView()
         
         let openDuration: NSTimeInterval = OPEN_DURATION
         
@@ -167,5 +168,9 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
             NSPasteboard.generalPasteboard().clearContents()
             NSPasteboard.generalPasteboard().setString(urlDescription, forType: NSStringPboardType)
         }
+    }
+    
+    func setupView () {
+        
     }
 }
