@@ -9,7 +9,7 @@
 import Cocoa
 
 class StatusItemView: NSView {
-    
+    //MARK: - Properties
     var statusItem: NSStatusItem
     var action: Selector?
     var target: AnyObject?
@@ -44,7 +44,7 @@ class StatusItemView: NSView {
     private var _alternateImage: NSImage?
     var alternateImage: NSImage? {
         get {
-            return _image
+            return _alternateImage
         }
         set {
             if _alternateImage != newValue {
@@ -61,6 +61,7 @@ class StatusItemView: NSView {
         return self.window!.convertRectToScreen(frame)
     }
     
+    //MARK: - Initializers
     init(statusItem: NSStatusItem) {
         let itemWidth = statusItem.length
         let itemHeight = NSStatusBar.systemStatusBar().thickness
@@ -79,30 +80,32 @@ class StatusItemView: NSView {
 
     override func drawRect(dirtyRect: NSRect) {
         super.drawRect(dirtyRect)
-
+        var icon: NSImage?
+        
         // Set up dark mode for icon
         if(NSUserDefaults.standardUserDefaults().stringForKey("AppleInterfaceStyle") == "Dark") {
-            image = NSImage(named: "statusHighlighted")
+            icon = self.alternateImage
         } else {
             if isHighlighted {
-                image = NSImage(named: "statusHighlighted")
+                icon = self.alternateImage
             } else {
-                image = NSImage(named: "statusItem")
+                icon = self.image
             }
         }
-        
-        let icon = self.image!
-        let iconSize = icon.size
-        let bounds = self.bounds
-        let iconX = roundf(Float(NSWidth(bounds) - iconSize.width) / 2.0)
-        let iconY = roundf(Float(NSHeight(bounds) - iconSize.height) / 2.0)
-        let iconPoint = NSMakePoint(CGFloat(iconX), CGFloat(iconY));
-
-        icon.drawAtPoint(iconPoint, fromRect: NSZeroRect, operation: .CompositeSourceOver, fraction: 1.0)
+        if let icon = icon {
+            let iconSize = icon.size
+            let bounds = self.bounds
+            let iconX = roundf(Float(NSWidth(bounds) - iconSize.width) / 2.0)
+            let iconY = roundf(Float(NSHeight(bounds) - iconSize.height) / 2.0)
+            let iconPoint = NSMakePoint(CGFloat(iconX), CGFloat(iconY));
+            
+            icon.drawAtPoint(iconPoint, fromRect: NSZeroRect, operation: .CompositeSourceOver, fraction: 1.0)
+        }
     }
     
     // #Mark: - Mouse tracking
     override func mouseDown(theEvent: NSEvent) {
+        //on mouse down open panel
         if (self.action != nil) {
             NSApp.sendAction(self.action!, to: self.target, from: self)
         }

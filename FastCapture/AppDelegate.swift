@@ -18,18 +18,18 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     
     private var _panelController: PanelController?
     var panelController: PanelController {
-        if !(self._panelController != nil) {
+        if self._panelController == nil {
             self._panelController = PanelController(delegate: self)
-            //self._panelController?.addObserver(self, forKeyPath: "hasActivePanel", options: NSKeyValueObservingOptions(0), context: kContextActivePanel)
         }
         return self._panelController!
     }
     
     //MARK: - NSApplicationDelegate
     func applicationDidFinishLaunching(aNotification: NSNotification) {
-        //let appDomain = NSBundle.mainBundle().bundleIdentifier!
-        //NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
-        
+        /* Uncomment following lines to reset user defaults
+        let appDomain = NSBundle.mainBundle().bundleIdentifier!
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        */
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLaunchedOnce")
             setupDefaults()
@@ -115,24 +115,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     //MARK: - Actions
     func togglePanel(sender: AnyObject) {
         self.menubarController!.hasActiveIcon = !self.menubarController!.hasActiveIcon
-        println("Toggle Panel: Has Active Icon \(self.menubarController!.hasActiveIcon)")
         self.panelController.hasActivePanel = self.menubarController!.hasActiveIcon
-        println("Toggle Panel: Has Active Panel \(self.panelController.hasActivePanel)")
     }
     
-    
-    //MARK: - KeyPath Observer
-    //    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-    //        if context == kContextActivePanel {
-    //            if (self.menubarController != nil) {
-    //                println("KeyPath Observer: \(self.panelController.hasActivePanel)")
-    //                self.menubarController!.hasActiveIcon = self.panelController.hasActivePanel;
-    //            }
-    //        }
-    //        else {
-    //            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
-    //        }
-    //    }
     
     //MARK: - PanelControllerDelegate
     func statusItemViewForPanelViewController() -> StatusItemView {

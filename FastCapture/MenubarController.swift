@@ -30,7 +30,7 @@ class MenubarController: NSObject {
     override init()  {
         let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(CGFloat(STATUS_ITEM_VIEW_WIDTH))
         statusItemView = StatusItemView(statusItem: statusItem)
-        statusItemView.image = NSImage(named: "statusImage")
+        statusItemView.image = NSImage(named: "statusItem")
         statusItemView.alternateImage = NSImage(named: "statusHighlighted")
         statusItemView.action = Selector("togglePanel:")
         super.init()

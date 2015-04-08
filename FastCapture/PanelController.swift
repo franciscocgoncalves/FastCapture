@@ -16,8 +16,6 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
     let OPEN_DURATION = 0.15
     let CLOSE_DURATION = 0.1
     
-    let POPUP_HEIGHT = 330
-    let PANEL_WIDTH  = 310
     let MENU_ANIMATION_DURATION = 0.1
     
     @IBOutlet weak var backgroundView: BackgroundView!
@@ -146,22 +144,8 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
             hasActivePanel = false
         }
     }
-    
-//    func windowDidResize(notification: NSNotification) {
-//        let panel: NSPanel = self.window as! NSPanel
-//        let statusRect: NSRect = self.statusRectForWindow(panel)
-//        let panelRect = panel.frame
-//        
-//        var statusX = roundf(Float(NSMidX(statusRect)));
-//        var panelX = CGFloat(statusX) - NSMinX(panelRect);
-//        
-//        self.backgroundView!.arrowX = Int(panelX);
-//        
-//        //TODO: - resize elements
-//    }
-//    
-    //MARK: - ScreenCaptureDelegate
-    
+
+    //MARK: - ScreenCaptureDelegate    
     func addLastScreenCaptureURL(fileURL: NSURL) {
         lastScreenCaptureLabel!.stringValue = "Last uploaded: \(fileURL)"
         

@@ -111,13 +111,13 @@
 			children = (
 				793261BB1AD2F02C00D62313 /* AppDelegate.swift */,
 				793261D81AD2F0A200D62313 /* Model */,
-				793261BD1AD2F02D00D62313 /* Images.xcassets */,
 				793261E61AD2F0FF00D62313 /* Controllers */,
 				793261DD1AD2F0DC00D62313 /* Views */,
 				793261BF1AD2F02E00D62313 /* MainMenu.xib */,
 				793261D61AD2F09800D62313 /* Panel.xib */,
 				793261B91AD2F02B00D62313 /* Supporting Files */,
 				793261F11AD2F19200D62313 /* FastCapture-Bridging-Header.h */,
+				793261BD1AD2F02D00D62313 /* Images.xcassets */,
 			);
 			path = FastCapture;
 			sourceTree = "<group>";
