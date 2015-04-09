@@ -23,11 +23,13 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
     @IBOutlet weak var lastScreenCapture: NSImageView!
     @IBOutlet weak var lastScreenCaptureLabel: NSTextField!
     @IBOutlet weak var settingsButton: NSButton!
-    @IBOutlet weak var copyToClipboardButton: NSButton!
+    @IBOutlet weak var copyLastCaptureToClipboardButton: NSButton!
     @IBOutlet weak var userName: NSTextField!
     @IBOutlet var settingsMenu: NSMenu!
-    
+    @IBOutlet weak var takeFirstScreenCaptureLabel: NSTextField!
     var delegate: PanelControllerDelegate?
+    
+    var lastScreenCaptureURL: NSURL?
     
     private var _hasActivePanel: Bool = false
     var hasActivePanel: Bool {
@@ -84,7 +86,7 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         var panelX = CGFloat(statusX) - NSMinX(panelRect);
         
         self.backgroundView!.arrowX = Int(panelX);
-
+        
         panel.alphaValue = 0
         panel.setFrame(NSRect(x: panelRect.minX, y: panelRect.maxY, width: panelRect.width, height: 0), display: true)
         panel.makeKeyAndOrderFront(self)
@@ -107,10 +109,10 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         NSAnimationContext.endGrouping()
         
         let time = Int64(UInt64(NSEC_PER_SEC) * UInt64(CLOSE_DURATION) * UInt64(2))
-
+        
         dispatch_after(dispatch_walltime(nil, time), dispatch_get_main_queue(), {
             self.window!.orderOut(nil)
-            })
+        })
     }
     
     func statusRectForWindow(panel: NSPanel) -> NSRect {
@@ -130,7 +132,7 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
             statusRect.size = NSMakeSize(CGFloat(STATUS_ITEM_VIEW_WIDTH), NSStatusBar.systemStatusBar().thickness);
             statusRect.origin.x  = CGFloat(roundf(Float(NSWidth(screenRect) - NSWidth(statusRect)) / 2.0))
             statusRect.origin.y = NSHeight(screenRect) - NSHeight(statusRect) * 2;
-
+            
         }
         return statusRect
     }
@@ -145,12 +147,11 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
             hasActivePanel = false
         }
     }
-
-    //MARK: - ScreenCaptureDelegate    
+    
+    //MARK: - ScreenCaptureDelegate
     func addLastScreenCaptureURL(fileURL: NSURL) {
-        lastScreenCaptureLabel!.stringValue = "Last uploaded: \(fileURL)"
-        
-        //TODO: - download image from imgur
+        lastScreenCaptureURL = fileURL
+        setupView()
     }
     
     func uploadingScreenCaptureProgress() {
@@ -171,6 +172,40 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
     }
     
     func setupView () {
+        var fileURL: NSURL? = lastScreenCaptureURL
         
+        if fileURL == nil {
+            fileURL = NSUserDefaults.standardUserDefaults().URLForKey("lastCapture")
+            
+            if fileURL == nil {
+                lastScreenCaptureLabel!.stringValue = ""
+                lastScreenCapture.hidden = true
+                
+                copyLastCaptureToClipboardButton.hidden = true
+                
+                takeFirstScreenCaptureLabel.hidden = false
+                return
+            }
+        }
+        
+        takeFirstScreenCaptureLabel.hidden = true
+        lastScreenCapture.hidden = false
+        copyLastCaptureToClipboardButton.hidden = false
+        
+        lastScreenCaptureLabel!.stringValue = "Last uploaded: \(fileURL!.description)"
+    
+        let urlRequest = NSURLRequest(URL: fileURL!)
+        var requestOperation = AFHTTPRequestOperation(request: urlRequest)
+        requestOperation.responseSerializer = AFImageResponseSerializer()
+        
+        requestOperation.setCompletionBlockWithSuccess({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            
+            self.lastScreenCapture.image = responseObject as? NSImage
+            
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+            println(error)
+        })
+        
+        requestOperation.start()
     }
 }

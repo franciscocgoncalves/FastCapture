@@ -57,6 +57,10 @@ class ScreenCapture: NSObject {
             
             NSPasteboard.generalPasteboard().clearContents()
             NSPasteboard.generalPasteboard().setString(imgImage.url.description, forType: NSStringPboardType)
+            
+            let systemSound = NSSound(named: "Glass")
+            systemSound!.play()
+            
             //TODO: - add notification to user.
             //TODO: - set the url on the PanelController, remove the progress bar, download this image
             }, progress: nil, failure: { (error: NSError!) -> Void in
@@ -79,7 +83,7 @@ class ScreenCapture: NSObject {
                 }
             }
             else {
-                let url: NSURL? = NSUserDefaults.standardUserDefaults().URLForKey("screenCaptureDirectory")
+                let url: AnyObject? = NSUserDefaults.standardUserDefaults().URLForKey("screenCaptureDirectory")
                 if url == nil {
                     setDirectory(folderDestinationURL)
                 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14D105g" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="7528.3" systemVersion="14D131" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none" useAutolayout="YES">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="7528.3"/>
     </dependencies>
@@ -7,10 +7,12 @@
         <customObject id="-2" userLabel="File's Owner" customClass="PanelController" customModule="FastCapture" customModuleProvider="target">
             <connections>
                 <outlet property="backgroundView" destination="XWI-ab-TmO" id="aX3-ks-csi"/>
+                <outlet property="copyLastCaptureToClipboardButton" destination="oBX-mg-Off" id="Stz-cl-FtE"/>
                 <outlet property="lastScreenCapture" destination="eym-eB-ogc" id="jVZ-d7-fvb"/>
                 <outlet property="lastScreenCaptureLabel" destination="Tn0-li-n89" id="NzE-Ui-w3J"/>
                 <outlet property="settingsButton" destination="GkD-se-RQD" id="gYx-uO-IEe"/>
                 <outlet property="settingsMenu" destination="R1c-8h-F0a" id="D4c-2E-0Pw"/>
+                <outlet property="takeFirstScreenCaptureLabel" destination="Uot-zT-mRD" id="oIR-nY-Mmi"/>
                 <outlet property="userLogoImage" destination="ezD-K3-cMC" id="lcs-j7-oe0"/>
                 <outlet property="userName" destination="g7W-kq-xMK" id="rfa-Kg-MFy"/>
                 <outlet property="window" destination="cAQ-XF-nWX" id="T1q-TS-0Wa"/>
@@ -29,10 +31,10 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="EC9-gj-jI1" customClass="PanelBar" customModule="FastCapture" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="281" width="310" height="49"/>
+                        <rect key="frame" x="0.0" y="281" width="325" height="49"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BFk-pS-twC">
-                                <rect key="frame" x="114" y="16" width="85" height="17"/>
+                                <rect key="frame" x="122" y="16" width="85" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="FastCapture" id="umb-tL-FIO">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -46,7 +48,7 @@
                         </constraints>
                     </customView>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="vVr-FO-GSe" customClass="PanelBar" customModule="FastCapture" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="0.0" width="310" height="49"/>
+                        <rect key="frame" x="0.0" y="0.0" width="325" height="49"/>
                         <subviews>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ezD-K3-cMC" userLabel="User Logo">
                                 <rect key="frame" x="11" y="14" width="33" height="28"/>
@@ -57,7 +59,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="testImgur" id="xHr-Nb-zoe"/>
                             </imageView>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GkD-se-RQD" userLabel="Settings Button">
-                                <rect key="frame" x="277" y="11" width="25" height="25"/>
+                                <rect key="frame" x="292" y="11" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="7Zw-vd-fdz"/>
                                     <constraint firstAttribute="width" constant="21" id="LMh-lF-FDr"/>
@@ -71,7 +73,7 @@
                                 </connections>
                             </button>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g7W-kq-xMK">
-                                <rect key="frame" x="46" y="19" width="201" height="16"/>
+                                <rect key="frame" x="46" y="19" width="216" height="16"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="franciscocsg - Screenshots Album" id="t1B-iT-5bk">
                                     <font key="font" metaFont="cellTitle"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -81,7 +83,7 @@
                         </subviews>
                         <constraints>
                             <constraint firstItem="ezD-K3-cMC" firstAttribute="top" secondItem="vVr-FO-GSe" secondAttribute="top" constant="7" id="3Px-y3-cyn"/>
-                            <constraint firstAttribute="centerY" secondItem="g7W-kq-xMK" secondAttribute="centerY" constant="2" id="6Vc-Sc-kfr"/>
+                            <constraint firstAttribute="centerY" secondItem="g7W-kq-xMK" secondAttribute="centerY" constant="2.5" id="6Vc-Sc-kfr"/>
                             <constraint firstAttribute="bottom" secondItem="GkD-se-RQD" secondAttribute="bottom" constant="14" id="6ef-Ke-uiX"/>
                             <constraint firstItem="GkD-se-RQD" firstAttribute="top" secondItem="vVr-FO-GSe" secondAttribute="top" constant="14" id="Dzt-MO-X3d"/>
                             <constraint firstAttribute="bottom" secondItem="ezD-K3-cMC" secondAttribute="bottom" constant="14" id="GhY-bp-9CX"/>
@@ -97,25 +99,11 @@
                             <constraint firstAttribute="height" constant="160" id="Ckf-CW-KQQ"/>
                             <constraint firstAttribute="width" constant="260" id="Qsn-F3-GWT"/>
                         </constraints>
-                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="testScreenShot" id="7J5-Sy-QL3" userLabel="Screen Capture"/>
+                        <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="7J5-Sy-QL3" userLabel="Screen Capture"/>
                     </imageView>
-                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oBX-mg-Off" userLabel="Save Button">
-                        <rect key="frame" x="277" y="55" width="25" height="25"/>
-                        <constraints>
-                            <constraint firstAttribute="height" constant="21" id="O3z-xy-AKo"/>
-                            <constraint firstAttribute="width" constant="21" id="toR-8u-g1x"/>
-                        </constraints>
-                        <buttonCell key="cell" type="help" bezelStyle="helpButton" image="testSave" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gcj-v5-4Oc">
-                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                            <font key="font" metaFont="system"/>
-                        </buttonCell>
-                        <connections>
-                            <action selector="copyLastCaptureToClipboard:" target="-2" id="fzi-LE-BkY"/>
-                        </connections>
-                    </button>
                     <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tn0-li-n89">
-                        <rect key="frame" x="11" y="62" width="267" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last uploaded: www.imgur.com/asdadsad" id="Zh2-WS-JsR">
+                        <rect key="frame" x="0.0" y="62" width="282" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last uploaded: www.imgur.com/asasesd.png" id="Zh2-WS-JsR">
                             <font key="font" metaFont="system"/>
                             <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                             <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
@@ -133,23 +121,47 @@
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
                     </box>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Uot-zT-mRD">
+                        <rect key="frame" x="44" y="157" width="237" height="17"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Please, take your first screen capture!" id="bww-uS-baC">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="oBX-mg-Off" userLabel="Save Button">
+                        <rect key="frame" x="281" y="55" width="25" height="25"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="21" id="O3z-xy-AKo"/>
+                            <constraint firstAttribute="width" constant="21" id="toR-8u-g1x"/>
+                        </constraints>
+                        <buttonCell key="cell" type="help" bezelStyle="helpButton" image="testSave" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Gcj-v5-4Oc">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="copyLastCaptureToClipboard:" target="-2" id="fzi-LE-BkY"/>
+                        </connections>
+                    </button>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailing" secondItem="oBX-mg-Off" secondAttribute="trailing" constant="10" id="23Z-Ow-oxF"/>
+                    <constraint firstAttribute="centerX" secondItem="Uot-zT-mRD" secondAttribute="centerX" constant="-7.5" id="1Fd-iN-VTN"/>
+                    <constraint firstAttribute="trailing" secondItem="oBX-mg-Off" secondAttribute="trailing" constant="6" id="23Z-Ow-oxF"/>
                     <constraint firstItem="vVr-FO-GSe" firstAttribute="top" secondItem="Tn0-li-n89" secondAttribute="bottom" constant="13" id="2m3-7K-y69"/>
-                    <constraint firstItem="Tn0-li-n89" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" constant="13" id="3Jj-oF-vfm"/>
-                    <constraint firstAttribute="trailing" secondItem="vVr-FO-GSe" secondAttribute="trailing" id="5Jf-SL-HYd"/>
+                    <constraint firstItem="Tn0-li-n89" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" constant="2" id="3Jj-oF-vfm"/>
+                    <constraint firstAttribute="trailing" secondItem="vVr-FO-GSe" secondAttribute="trailing" constant="-15" id="5Jf-SL-HYd"/>
                     <constraint firstItem="vVr-FO-GSe" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" id="6Ma-P5-2EV"/>
                     <constraint firstAttribute="bottom" secondItem="vVr-FO-GSe" secondAttribute="bottom" id="8cE-7u-bls"/>
                     <constraint firstItem="EC9-gj-jI1" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" id="9Pc-g1-5LN"/>
                     <constraint firstItem="oBX-mg-Off" firstAttribute="leading" secondItem="Tn0-li-n89" secondAttribute="trailing" constant="3" id="9q8-sf-yhh"/>
                     <constraint firstItem="Tn0-li-n89" firstAttribute="top" secondItem="eym-eB-ogc" secondAttribute="bottom" constant="34" id="C5a-f1-hsW"/>
                     <constraint firstItem="EC9-gj-jI1" firstAttribute="top" secondItem="XWI-ab-TmO" secondAttribute="top" id="Gno-oS-xD0"/>
+                    <constraint firstAttribute="centerY" secondItem="Uot-zT-mRD" secondAttribute="centerY" id="Irh-38-vc8"/>
                     <constraint firstItem="oBX-mg-Off" firstAttribute="leading" secondItem="Tn0-li-n89" secondAttribute="trailing" constant="3" id="Jbe-t6-AD9"/>
                     <constraint firstAttribute="trailing" secondItem="eym-eB-ogc" secondAttribute="trailing" constant="30" id="Mr4-r8-fHl"/>
                     <constraint firstItem="vVr-FO-GSe" firstAttribute="top" secondItem="oBX-mg-Off" secondAttribute="bottom" constant="9" id="SFM-ct-dZi"/>
                     <constraint firstItem="eym-eB-ogc" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" constant="20" id="kP5-Qi-Gfq"/>
-                    <constraint firstAttribute="trailing" secondItem="EC9-gj-jI1" secondAttribute="trailing" id="oFZ-28-7w7"/>
+                    <constraint firstAttribute="trailing" secondItem="EC9-gj-jI1" secondAttribute="trailing" constant="-15" id="oFZ-28-7w7"/>
                     <constraint firstItem="eym-eB-ogc" firstAttribute="top" secondItem="EC9-gj-jI1" secondAttribute="bottom" constant="8" id="tKW-jb-64u"/>
                 </constraints>
             </view>
@@ -178,7 +190,6 @@
     <resources>
         <image name="testImgur" width="37.463413238525391" height="37.463413238525391"/>
         <image name="testSave" width="400" height="300"/>
-        <image name="testScreenShot" width="247" height="196"/>
         <image name="testSettings" width="128" height="128"/>
     </resources>
 </document>
