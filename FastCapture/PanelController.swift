@@ -7,6 +7,7 @@
 //
 
 import Cocoa
+import CoreGraphics
 
 protocol PanelControllerDelegate {
     func statusItemViewForPanelViewController() -> StatusItemView
@@ -63,7 +64,9 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         panel.acceptsMouseMovedEvents = true
         panel.becomeKeyWindow()
         panel.floatingPanel = true
+        panel.level = kCGMaximumWindowLevelKey
         panel.opaque = false
+        panel.worksWhenModal = true
         panel.backgroundColor = NSColor.clearColor()
     }
     
@@ -169,6 +172,10 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
             NSPasteboard.generalPasteboard().clearContents()
             NSPasteboard.generalPasteboard().setString(urlDescription, forType: NSStringPboardType)
         }
+    }
+    
+    @IBAction func login(sender: NSButton) {
+        User.sharedInstance.login()
     }
     
     func setupView () {

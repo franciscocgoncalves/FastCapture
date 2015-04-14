@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     @IBOutlet weak var window: NSWindow!
     var kContextActivePanel = UnsafeMutablePointer<()>()
     var menubarController: MenubarController?
-    let clientId = "1827bb4a1bbb753"
+    let clientId = "d61102426af1a52"
     
     private var _panelController: PanelController?
     var panelController: PanelController {
@@ -24,7 +24,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         return self._panelController!
     }
     
-    //MARK: - NSApplicationDelegate
+    //MARK: - NSApplicationDelegate 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Uncomment following lines to reset user defaults
 
@@ -40,18 +40,40 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         
         ScreenCapture.sharedInstance.readDirectory(nil)
         
-        menubarController = MenubarController()
-        
         IMGSession.anonymousSessionWithClientID(clientId, withDelegate: self)
-        
+
+        menubarController = MenubarController()
+    }
+    
+    // register app to get notified when launched via URL
+    func applicationWillFinishLaunching(notification: NSNotification) {
+        NSAppleEventManager.sharedAppleEventManager().setEventHandler(
+            self,
+            andSelector: "handleURLEvent:withReply:",
+            forEventClass: AEEventClass(kInternetEventClass),
+            andEventID: AEEventID(kAEGetURL)
+        )
+    }
+    
+    /** Gets called when the App launches/opens via URL. */
+    func handleURLEvent(event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
+        if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue {
+            if let url = NSURL(string: urlString) {
+                handleImgurLogin(url)
+            }
+        }
+        else {
+            NSLog("No valid URL to handle")
+        }
     }
     
     func applicationWillTerminate(aNotification: NSNotification) {
         self.menubarController = nil
     }
     
+    
     //MARK: - ImgurSession
-    func application(application: NSApplication, openURL url: NSURL!, sourceApplication: String!, annotation: AnyObject!) -> Bool {
+    func handleImgurLogin(url: NSURL) {
         
         let params = NSMutableDictionary()
         
@@ -67,13 +89,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         if pinCode == nil {
             var error = params["error"] as? String
             println("Error: \(error)")
-            return false
         }
         
         IMGSession.sharedInstance().authenticateWithCode(pinCode)
-        
-        return true
     }
+
     
     //MARK: - ImgurSessionDelegate
     func imgurSessionNeedsExternalWebview(url: NSURL!, completion: (() -> Void)!) {
@@ -94,11 +114,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     }
     
     func imgurSessionAuthStateChanged(state: IMGAuthState) {
-        //TODO: - implement this
+        if state == .Anon {
+            User.sharedInstance.username = nil
+            User.sharedInstance.accountID = nil
+            User.sharedInstance.isLoggedIn = false
+        }
     }
     
     func imgurSessionUserRefreshed(user: IMGAccount!) {
-        //TODO: - implement this
+        User.sharedInstance.username = user.username
+        User.sharedInstance.accountID = user.accountID
+        User.sharedInstance.isLoggedIn = true
     }
     
     func imgurSessionNewNotifications(freshNotifications: [AnyObject]!) {

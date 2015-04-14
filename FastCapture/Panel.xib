@@ -9,12 +9,10 @@
                 <outlet property="backgroundView" destination="XWI-ab-TmO" id="aX3-ks-csi"/>
                 <outlet property="copyLastCaptureToClipboardButton" destination="oBX-mg-Off" id="Stz-cl-FtE"/>
                 <outlet property="lastScreenCapture" destination="eym-eB-ogc" id="jVZ-d7-fvb"/>
-                <outlet property="lastScreenCaptureLabel" destination="Tn0-li-n89" id="NzE-Ui-w3J"/>
+                <outlet property="lastScreenCaptureLabel" destination="bER-rS-6OL" id="r0i-KD-K0b"/>
                 <outlet property="settingsButton" destination="GkD-se-RQD" id="gYx-uO-IEe"/>
                 <outlet property="settingsMenu" destination="R1c-8h-F0a" id="D4c-2E-0Pw"/>
                 <outlet property="takeFirstScreenCaptureLabel" destination="Uot-zT-mRD" id="oIR-nY-Mmi"/>
-                <outlet property="userLogoImage" destination="ezD-K3-cMC" id="lcs-j7-oe0"/>
-                <outlet property="userName" destination="g7W-kq-xMK" id="rfa-Kg-MFy"/>
                 <outlet property="window" destination="cAQ-XF-nWX" id="T1q-TS-0Wa"/>
             </connections>
         </customObject>
@@ -31,10 +29,10 @@
                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                 <subviews>
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="EC9-gj-jI1" customClass="PanelBar" customModule="FastCapture" customModuleProvider="target">
-                        <rect key="frame" x="0.0" y="281" width="325" height="49"/>
+                        <rect key="frame" x="0.0" y="279" width="325" height="51"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="BFk-pS-twC">
-                                <rect key="frame" x="122" y="16" width="85" height="17"/>
+                                <rect key="frame" x="122" y="17" width="85" height="17"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="FastCapture" id="umb-tL-FIO">
                                     <font key="font" metaFont="systemBold"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -50,16 +48,8 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="vVr-FO-GSe" customClass="PanelBar" customModule="FastCapture" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="325" height="49"/>
                         <subviews>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ezD-K3-cMC" userLabel="User Logo">
-                                <rect key="frame" x="11" y="14" width="33" height="28"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="28" id="Msc-ur-2dk"/>
-                                    <constraint firstAttribute="width" constant="33" id="hpt-cM-LKO"/>
-                                </constraints>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="testImgur" id="xHr-Nb-zoe"/>
-                            </imageView>
                             <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GkD-se-RQD" userLabel="Settings Button">
-                                <rect key="frame" x="292" y="11" width="25" height="25"/>
+                                <rect key="frame" x="282" y="11" width="25" height="25"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="7Zw-vd-fdz"/>
                                     <constraint firstAttribute="width" constant="21" id="LMh-lF-FDr"/>
@@ -72,51 +62,42 @@
                                     <action selector="settingsButtonAction:" target="-2" id="TIh-d3-Afn"/>
                                 </connections>
                             </button>
-                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="g7W-kq-xMK">
-                                <rect key="frame" x="46" y="19" width="216" height="16"/>
-                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="franciscocsg - Screenshots Album" id="t1B-iT-5bk">
-                                    <font key="font" metaFont="cellTitle"/>
-                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                                </textFieldCell>
-                            </textField>
+                            <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-DV-5Hq">
+                                <rect key="frame" x="0.0" y="46" width="310" height="5"/>
+                                <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
+                                <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <font key="titleFont" metaFont="system"/>
+                            </box>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2zi-Ed-1LM">
+                                <rect key="frame" x="4" y="7" width="75" height="32"/>
+                                <buttonCell key="cell" type="push" title="Login" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="HoC-cc-uLS">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="login:" target="-2" id="kpm-mP-YYv"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ezD-K3-cMC" firstAttribute="top" secondItem="vVr-FO-GSe" secondAttribute="top" constant="7" id="3Px-y3-cyn"/>
-                            <constraint firstAttribute="centerY" secondItem="g7W-kq-xMK" secondAttribute="centerY" constant="2.5" id="6Vc-Sc-kfr"/>
+                            <constraint firstAttribute="trailing" secondItem="q3D-DV-5Hq" secondAttribute="trailing" constant="15" id="1ph-qj-QM9"/>
                             <constraint firstAttribute="bottom" secondItem="GkD-se-RQD" secondAttribute="bottom" constant="14" id="6ef-Ke-uiX"/>
                             <constraint firstItem="GkD-se-RQD" firstAttribute="top" secondItem="vVr-FO-GSe" secondAttribute="top" constant="14" id="Dzt-MO-X3d"/>
-                            <constraint firstAttribute="bottom" secondItem="ezD-K3-cMC" secondAttribute="bottom" constant="14" id="GhY-bp-9CX"/>
-                            <constraint firstAttribute="trailing" secondItem="GkD-se-RQD" secondAttribute="trailing" constant="10" id="KTz-ie-oxW"/>
-                            <constraint firstItem="ezD-K3-cMC" firstAttribute="leading" secondItem="vVr-FO-GSe" secondAttribute="leading" constant="11" id="lcj-To-hn7"/>
-                            <constraint firstItem="GkD-se-RQD" firstAttribute="leading" secondItem="g7W-kq-xMK" secondAttribute="trailing" constant="34" id="tXf-fA-byO"/>
-                            <constraint firstItem="g7W-kq-xMK" firstAttribute="leading" secondItem="ezD-K3-cMC" secondAttribute="trailing" constant="4" id="x39-au-Pqj"/>
+                            <constraint firstAttribute="trailing" secondItem="GkD-se-RQD" secondAttribute="trailing" constant="20" id="KTz-ie-oxW"/>
+                            <constraint firstItem="q3D-DV-5Hq" firstAttribute="top" secondItem="vVr-FO-GSe" secondAttribute="top" id="i0S-qr-NfN"/>
+                            <constraint firstItem="q3D-DV-5Hq" firstAttribute="leading" secondItem="vVr-FO-GSe" secondAttribute="leading" id="nCX-0p-5OZ"/>
                         </constraints>
                     </customView>
                     <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="eym-eB-ogc">
-                        <rect key="frame" x="20" y="113" width="260" height="160"/>
+                        <rect key="frame" x="20" y="111" width="260" height="160"/>
                         <constraints>
                             <constraint firstAttribute="height" constant="160" id="Ckf-CW-KQQ"/>
                             <constraint firstAttribute="width" constant="260" id="Qsn-F3-GWT"/>
                         </constraints>
                         <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="7J5-Sy-QL3" userLabel="Screen Capture"/>
                     </imageView>
-                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="Tn0-li-n89">
-                        <rect key="frame" x="0.0" y="62" width="282" height="17"/>
-                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last uploaded: www.imgur.com/asasesd.png" id="Zh2-WS-JsR">
-                            <font key="font" metaFont="system"/>
-                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
-                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
-                        </textFieldCell>
-                    </textField>
-                    <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-DV-5Hq">
-                        <rect key="frame" x="0.0" y="46" width="310" height="5"/>
-                        <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
-                        <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                        <font key="titleFont" metaFont="system"/>
-                    </box>
                     <box verticalHuggingPriority="750" fixedFrame="YES" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="hYg-TH-dRo">
-                        <rect key="frame" x="0.0" y="279" width="310" height="5"/>
+                        <rect key="frame" x="0.0" y="276" width="310" height="9"/>
                         <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
                         <color key="fillColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <font key="titleFont" metaFont="system"/>
@@ -143,29 +124,36 @@
                             <action selector="copyLastCaptureToClipboard:" target="-2" id="fzi-LE-BkY"/>
                         </connections>
                     </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="bER-rS-6OL">
+                        <rect key="frame" x="6" y="62" width="262" height="16"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Last uploaded: www.imgur.com/asasesd.png" id="VHg-WW-skd">
+                            <font key="font" metaFont="cellTitle"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
                 </subviews>
                 <constraints>
                     <constraint firstAttribute="centerX" secondItem="Uot-zT-mRD" secondAttribute="centerX" constant="-7.5" id="1Fd-iN-VTN"/>
                     <constraint firstAttribute="trailing" secondItem="oBX-mg-Off" secondAttribute="trailing" constant="6" id="23Z-Ow-oxF"/>
-                    <constraint firstItem="vVr-FO-GSe" firstAttribute="top" secondItem="Tn0-li-n89" secondAttribute="bottom" constant="13" id="2m3-7K-y69"/>
-                    <constraint firstItem="Tn0-li-n89" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" constant="2" id="3Jj-oF-vfm"/>
                     <constraint firstAttribute="trailing" secondItem="vVr-FO-GSe" secondAttribute="trailing" constant="-15" id="5Jf-SL-HYd"/>
                     <constraint firstItem="vVr-FO-GSe" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" id="6Ma-P5-2EV"/>
                     <constraint firstAttribute="bottom" secondItem="vVr-FO-GSe" secondAttribute="bottom" id="8cE-7u-bls"/>
                     <constraint firstItem="EC9-gj-jI1" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" id="9Pc-g1-5LN"/>
-                    <constraint firstItem="oBX-mg-Off" firstAttribute="leading" secondItem="Tn0-li-n89" secondAttribute="trailing" constant="3" id="9q8-sf-yhh"/>
-                    <constraint firstItem="Tn0-li-n89" firstAttribute="top" secondItem="eym-eB-ogc" secondAttribute="bottom" constant="34" id="C5a-f1-hsW"/>
                     <constraint firstItem="EC9-gj-jI1" firstAttribute="top" secondItem="XWI-ab-TmO" secondAttribute="top" id="Gno-oS-xD0"/>
                     <constraint firstAttribute="centerY" secondItem="Uot-zT-mRD" secondAttribute="centerY" id="Irh-38-vc8"/>
-                    <constraint firstItem="oBX-mg-Off" firstAttribute="leading" secondItem="Tn0-li-n89" secondAttribute="trailing" constant="3" id="Jbe-t6-AD9"/>
                     <constraint firstAttribute="trailing" secondItem="eym-eB-ogc" secondAttribute="trailing" constant="30" id="Mr4-r8-fHl"/>
+                    <constraint firstItem="bER-rS-6OL" firstAttribute="top" secondItem="eym-eB-ogc" secondAttribute="bottom" constant="33" id="Q24-5U-JMP"/>
                     <constraint firstItem="vVr-FO-GSe" firstAttribute="top" secondItem="oBX-mg-Off" secondAttribute="bottom" constant="9" id="SFM-ct-dZi"/>
+                    <constraint firstItem="vVr-FO-GSe" firstAttribute="top" secondItem="bER-rS-6OL" secondAttribute="bottom" constant="13" id="fUj-SR-11y"/>
                     <constraint firstItem="eym-eB-ogc" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" constant="20" id="kP5-Qi-Gfq"/>
                     <constraint firstAttribute="trailing" secondItem="EC9-gj-jI1" secondAttribute="trailing" constant="-15" id="oFZ-28-7w7"/>
+                    <constraint firstItem="bER-rS-6OL" firstAttribute="leading" secondItem="XWI-ab-TmO" secondAttribute="leading" constant="8" id="oNr-KU-OPo"/>
                     <constraint firstItem="eym-eB-ogc" firstAttribute="top" secondItem="EC9-gj-jI1" secondAttribute="bottom" constant="8" id="tKW-jb-64u"/>
+                    <constraint firstItem="oBX-mg-Off" firstAttribute="leading" secondItem="bER-rS-6OL" secondAttribute="trailing" constant="17" id="xLH-WM-lvS"/>
                 </constraints>
             </view>
-            <point key="canvasLocation" x="518" y="182"/>
+            <point key="canvasLocation" x="505" y="178"/>
         </window>
         <menu id="R1c-8h-F0a">
             <items>
@@ -188,7 +176,6 @@
         </menu>
     </objects>
     <resources>
-        <image name="testImgur" width="37.463413238525391" height="37.463413238525391"/>
         <image name="testSave" width="400" height="300"/>
         <image name="testSettings" width="128" height="128"/>
     </resources>

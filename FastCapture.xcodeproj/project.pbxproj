@@ -113,6 +113,7 @@
 				793261D81AD2F0A200D62313 /* Model */,
 				793261E61AD2F0FF00D62313 /* Controllers */,
 				793261DD1AD2F0DC00D62313 /* Views */,
+				7981EC6C1ADDAD3700D18429 /* Resources */,
 				793261BF1AD2F02E00D62313 /* MainMenu.xib */,
 				793261D61AD2F09800D62313 /* Panel.xib */,
 				793261B91AD2F02B00D62313 /* Supporting Files */,
@@ -151,7 +152,6 @@
 		793261D81AD2F0A200D62313 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				793261D91AD2F0C100D62313 /* ScreenCapture.swift */,
 				793261DA1AD2F0C100D62313 /* User.swift */,
 			);
 			name = Model;
@@ -175,6 +175,14 @@
 				793261E81AD2F11800D62313 /* PanelController.swift */,
 			);
 			name = Controllers;
+			sourceTree = "<group>";
+		};
+		7981EC6C1ADDAD3700D18429 /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				793261D91AD2F0C100D62313 /* ScreenCapture.swift */,
+			);
+			name = Resources;
 			sourceTree = "<group>";
 		};
 		BD16A534F511EF379E71BFA7 /* Pods */ = {

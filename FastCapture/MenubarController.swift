@@ -8,7 +8,6 @@
 
 import Cocoa
 
-
 class MenubarController: NSObject {
     var statusItemView: StatusItemView
     var statusItem: NSStatusItem {
@@ -34,7 +33,7 @@ class MenubarController: NSObject {
         statusItemView.alternateImage = NSImage(named: "statusHighlighted")
         statusItemView.action = Selector("togglePanel:")
         super.init()
-        
+                
         ScreenCapture.sharedInstance.run()
     }
 }

@@ -8,8 +8,16 @@
 
 import Cocoa
 
+private let _User = User()
+
 class User: NSObject {
-    //TODO: - Make this a singleton, add user properties
+    class var sharedInstance: User {
+        return _User
+    }
+    
+    var isLoggedIn: Bool = false
+    var username: String?
+    var accountID: Int?
     
     func login() {
         if(IMGSession.sharedInstance().isAnonymous) {
@@ -18,7 +26,7 @@ class User: NSObject {
             let delegate = NSApplication.sharedApplication().delegate as! IMGSessionDelegate
             
             let imgSession = IMGSession.authenticatedSessionWithClientID("3ad48f8fb1be413", secret: "0e2b2f6e637cdfa9aa17b5984772a6353718fac5", authType: IMGAuthType.CodeAuth, withDelegate: delegate)
-            
+                        
             //this request is to force auth accordingly to the library documentation
             IMGGalleryRequest.hotGalleryPage(0, withViralSort: true, success: { (array: [AnyObject]!) -> Void in
                 println("request bem sucedido")
