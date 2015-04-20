@@ -18,7 +18,6 @@
 		793261DC1AD2F0C100D62313 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DA1AD2F0C100D62313 /* User.swift */; };
 		793261E21AD2F0FD00D62313 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DE1AD2F0FD00D62313 /* BackgroundView.swift */; };
 		793261E31AD2F0FD00D62313 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DF1AD2F0FD00D62313 /* Panel.swift */; };
-		793261E41AD2F0FD00D62313 /* PanelBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E01AD2F0FD00D62313 /* PanelBar.swift */; };
 		793261E51AD2F0FD00D62313 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E11AD2F0FD00D62313 /* StatusItemView.swift */; };
 		793261E91AD2F11800D62313 /* MenubarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E71AD2F11800D62313 /* MenubarController.swift */; };
 		793261EA1AD2F11800D62313 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E81AD2F11800D62313 /* PanelController.swift */; };
@@ -50,7 +49,6 @@
 		793261DA1AD2F0C100D62313 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		793261DE1AD2F0FD00D62313 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
 		793261DF1AD2F0FD00D62313 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
-		793261E01AD2F0FD00D62313 /* PanelBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelBar.swift; sourceTree = "<group>"; };
 		793261E11AD2F0FD00D62313 /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
 		793261E71AD2F11800D62313 /* MenubarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenubarController.swift; sourceTree = "<group>"; };
 		793261E81AD2F11800D62313 /* PanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			children = (
 				793261DE1AD2F0FD00D62313 /* BackgroundView.swift */,
 				793261DF1AD2F0FD00D62313 /* Panel.swift */,
-				793261E01AD2F0FD00D62313 /* PanelBar.swift */,
 				793261E11AD2F0FD00D62313 /* StatusItemView.swift */,
 			);
 			name = Views;
@@ -338,7 +335,6 @@
 				793261E31AD2F0FD00D62313 /* Panel.swift in Sources */,
 				791354051AE56926003F2523 /* DirectoryManager.swift in Sources */,
 				793261EA1AD2F11800D62313 /* PanelController.swift in Sources */,
-				793261E41AD2F0FD00D62313 /* PanelBar.swift in Sources */,
 				793261E51AD2F0FD00D62313 /* StatusItemView.swift in Sources */,
 				793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */,
 				793261E21AD2F0FD00D62313 /* BackgroundView.swift in Sources */,

@@ -46,7 +46,6 @@ class ScreenCapture: NSObject {
         let runLoop: NSRunLoop = NSRunLoop.currentRunLoop()
         
         var block: CDEventsEventBlock? = { (var watcher: CDEvents!, var event: CDEvent!) -> Void in
-            println("got event")
             DirectoryManager.sharedInstance.readDirectory({(fileURL: NSURL) in
                 //TODO: - uncomment following line, check connectivity
                 self.uploadImage(fileURL)
@@ -64,7 +63,6 @@ class ScreenCapture: NSObject {
         //TODO: - upload to specified album, NSDefault shouldbe: FastCapture. User can change this.
         //TODO: - add progress bar on PanelViewController
         IMGImageRequest.uploadImageWithFileURL(fileURL, success: {(imgImage: IMGImage!) -> Void in
-            println(imgImage.url)
             NSUserDefaults.standardUserDefaults().setURL(imgImage.url, forKey: "lastCapture")
             self.delegate?.addLastScreenCaptureURL(imgImage.url)
             
@@ -91,7 +89,6 @@ class ScreenCapture: NSObject {
             var object: NSURL? = cache.objectForKey(key) as? NSURL
             
             if object == nil {
-                println(name)
                 self.cache.setObject(fileURL, forKey: key)
                 if(cb != nil) {
                     cb!(fileURL: fileURL as! NSURL)

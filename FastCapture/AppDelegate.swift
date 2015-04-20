@@ -106,7 +106,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     
     //MARK: - ImgurSessionDelegate
     func imgurSessionNeedsExternalWebview(url: NSURL!, completion: (() -> Void)!) {
-        println("URL: \(url)")
         NSWorkspace.sharedWorkspace().openURL(url)
     }
     
@@ -135,7 +134,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         User.sharedInstance.accountID = user.accountID
         User.sharedInstance.isLoggedIn = true
         self.panelController.window?.viewsNeedDisplay = true
-        println("Logged in")
     }
     
     func imgurSessionNewNotifications(freshNotifications: [AnyObject]!) {

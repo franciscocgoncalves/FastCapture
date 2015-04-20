@@ -227,4 +227,8 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
     @IBAction func quitFastCapture(sender: NSMenuItem) {
         NSApplication.sharedApplication().terminate(nil)
     }
+    @IBAction func reportABug(sender: NSMenuItem) {
+        var url = NSURL(string: "https://github.com/franciscocgoncalves/FastCapture/issues")
+        NSWorkspace.sharedWorkspace().openURL(url!)
+    }
 }

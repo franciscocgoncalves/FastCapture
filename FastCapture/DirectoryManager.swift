@@ -60,8 +60,7 @@ class DirectoryManager: NSObject {
             self.url = NSUserDefaults.standardUserDefaults().URLForKey("screenCaptureDirectory")
             
         }
-        println(self.url)
-        let contents: NSArray? = fileManager.contentsOfDirectoryAtURL(self.url!, includingPropertiesForKeys: keys as [AnyObject], options: options, error: &error)
+        let contents: NSArray? = fileManager.contentsOfDirectoryAtURL(self.url!, includingPropertiesForKeys: keys as? [AnyObject], options: options, error: &error)
         
         ScreenCapture.sharedInstance.addNewFilesToCache(contents, cb: cb)
     }
