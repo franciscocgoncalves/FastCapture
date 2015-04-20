@@ -30,8 +30,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Uncomment following lines to reset user defaults
 
-        let appDomain = NSBundle.mainBundle().bundleIdentifier!
-        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+//        let appDomain = NSBundle.mainBundle().bundleIdentifier!
+//        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
 
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLaunchedOnce")
