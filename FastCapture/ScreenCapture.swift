@@ -27,14 +27,27 @@ class ScreenCapture: NSObject {
     var enumerator: NSDirectoryEnumerator?
     var delegate: ScreenCaptureDelegate?
     
+    var _notification: NSUserNotification?
+    var notification: NSUserNotification {
+        get {
+            if _notification == nil {
+                _notification = NSUserNotification()
+                _notification!.title = "FastCapture"
+                _notification!.informativeText = "A link to your screenshot has been copied to your clipboard."
+                _notification!.soundName = NSUserNotificationDefaultSoundName
+            }
+            return _notification!
+        }
+    }
+    
     func run() {
-        let urlsWatched: [AnyObject] = NSArray(object: url!) as [AnyObject]
+        let urlsWatched: [AnyObject] = NSArray(object: DirectoryManager.sharedInstance.url!) as [AnyObject]
         let creationFlags = kCDEventsDefaultEventStreamFlags;
         let runLoop: NSRunLoop = NSRunLoop.currentRunLoop()
         
         var block: CDEventsEventBlock? = { (var watcher: CDEvents!, var event: CDEvent!) -> Void in
             println("got event")
-            self.readDirectory({(fileURL: NSURL) in
+            DirectoryManager.sharedInstance.readDirectory({(fileURL: NSURL) in
                 //TODO: - uncomment following line, check connectivity
                 self.uploadImage(fileURL)
                 })
@@ -58,72 +71,12 @@ class ScreenCapture: NSObject {
             NSPasteboard.generalPasteboard().clearContents()
             NSPasteboard.generalPasteboard().setString(imgImage.url.description, forType: NSStringPboardType)
             
-            let systemSound = NSSound(named: "Glass")
-            systemSound!.play()
+            NSUserNotificationCenter.defaultUserNotificationCenter().deliverNotification(self.notification)
             
-            //TODO: - add notification to user.
             //TODO: - set the url on the PanelController, remove the progress bar, download this image
             }, progress: nil, failure: { (error: NSError!) -> Void in
                 println("Error: \(error)")
             })
-    }
-    
-    
-    func createDirectory() {
-        if let picturesURL = NSFileManager.defaultManager().URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask).first as? NSURL {
-            let folderDestinationURL: NSURL = picturesURL.URLByAppendingPathComponent("ScreenCapture")
-            var err: NSErrorPointer = nil
-            var isDir = ObjCBool(true)
-            if !NSFileManager.defaultManager().fileExistsAtPath(folderDestinationURL.path!, isDirectory: &isDir) {
-                if NSFileManager.defaultManager().createDirectoryAtPath(folderDestinationURL.path!, withIntermediateDirectories: true, attributes: nil, error: err) {
-                    println("sucessfuly created dir")
-                    setDirectory(folderDestinationURL)
-                } else {
-                    println("failed create dir")
-                }
-            }
-            else {
-                let url: AnyObject? = NSUserDefaults.standardUserDefaults().URLForKey("screenCaptureDirectory")
-                if url == nil {
-                    setDirectory(folderDestinationURL)
-                }
-            }
-        }
-    }
-    
-    func setDirectory(folderDestinationURL: NSURL) {
-        NSUserDefaults.standardUserDefaults().setURL(folderDestinationURL, forKey: "screenCaptureDirectory")
-        self.url = folderDestinationURL
-        setScreenCaptureDefaultFolder(folderDestinationURL)
-    }
-    
-    
-    func setScreenCaptureDefaultFolder(directoryURL: NSURL) {
-        let task = NSTask()
-        task.launchPath = "/bin/bash"
-        task.arguments = ["-c",
-            "defaults write com.apple.screencapture location \(directoryURL.path!); killall SystemUIServer"]
-        println(task.arguments)
-        task.launch()
-    }
-    
-    
-    func readDirectory(cb: ((fileURL: NSURL) -> Void)?) {
-        println("starting")
-        let fileManager = NSFileManager.defaultManager()
-        let keys = NSArray(objects: NSURLNameKey)
-        let options = (NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants | NSDirectoryEnumerationOptions.SkipsHiddenFiles)
-        var error: NSError?
-        
-        //Get Contents of directory
-        if(self.url == nil) {
-            self.url = NSUserDefaults.standardUserDefaults().URLForKey("screenCaptureDirectory")
-
-        }
-        println(self.url)
-        let contents: NSArray? = fileManager.contentsOfDirectoryAtURL(self.url!, includingPropertiesForKeys: keys as [AnyObject], options: options, error: &error)
-        
-        addNewFilesToCache(contents, cb: cb)
     }
     
     func addNewFilesToCache(contents: NSArray?, cb: ((fileURL: NSURL) -> Void)?) {

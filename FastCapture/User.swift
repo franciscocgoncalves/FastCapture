@@ -25,7 +25,7 @@ class User: NSObject {
             
             let delegate = NSApplication.sharedApplication().delegate as! IMGSessionDelegate
             
-            let imgSession = IMGSession.authenticatedSessionWithClientID("3ad48f8fb1be413", secret: "0e2b2f6e637cdfa9aa17b5984772a6353718fac5", authType: IMGAuthType.CodeAuth, withDelegate: delegate)
+            let imgSession = IMGSession.authenticatedSessionWithClientID("faf27519a494215", secret: "6ba2fe23e54af0c3aed0ce862993837644f0d271", authType: IMGAuthType.CodeAuth, withDelegate: delegate)
                         
             //this request is to force auth accordingly to the library documentation
             IMGGalleryRequest.hotGalleryPage(0, withViralSort: true, success: { (array: [AnyObject]!) -> Void in

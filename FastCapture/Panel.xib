@@ -10,6 +10,7 @@
                 <outlet property="copyLastCaptureToClipboardButton" destination="oBX-mg-Off" id="Stz-cl-FtE"/>
                 <outlet property="lastScreenCapture" destination="eym-eB-ogc" id="jVZ-d7-fvb"/>
                 <outlet property="lastScreenCaptureLabel" destination="bER-rS-6OL" id="r0i-KD-K0b"/>
+                <outlet property="loginButton" destination="2zi-Ed-1LM" id="cZL-hs-q4N"/>
                 <outlet property="settingsButton" destination="GkD-se-RQD" id="gYx-uO-IEe"/>
                 <outlet property="settingsMenu" destination="R1c-8h-F0a" id="D4c-2E-0Pw"/>
                 <outlet property="takeFirstScreenCaptureLabel" destination="Uot-zT-mRD" id="oIR-nY-Mmi"/>
@@ -18,8 +19,8 @@
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
         <customObject id="-3" userLabel="Application" customClass="NSObject"/>
-        <window title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="none" id="cAQ-XF-nWX" customClass="Panel" customModule="FastCapture" customModuleProvider="target">
-            <windowStyleMask key="styleMask" utility="YES"/>
+        <window allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="none" id="cAQ-XF-nWX" customClass="Panel" customModule="FastCapture" customModuleProvider="target">
+            <windowStyleMask key="styleMask" utility="YES" nonactivatingPanel="YES"/>
             <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" ignoresCycle="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="120" y="68" width="310" height="330"/>
@@ -48,20 +49,6 @@
                     <customView translatesAutoresizingMaskIntoConstraints="NO" id="vVr-FO-GSe" customClass="PanelBar" customModule="FastCapture" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="325" height="49"/>
                         <subviews>
-                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GkD-se-RQD" userLabel="Settings Button">
-                                <rect key="frame" x="282" y="11" width="25" height="25"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="7Zw-vd-fdz"/>
-                                    <constraint firstAttribute="width" constant="21" id="LMh-lF-FDr"/>
-                                </constraints>
-                                <buttonCell key="cell" type="help" bezelStyle="helpButton" image="testSettings" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kqh-Ou-the">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="settingsButtonAction:" target="-2" id="TIh-d3-Afn"/>
-                                </connections>
-                            </button>
                             <box verticalHuggingPriority="750" title="Box" boxType="separator" titlePosition="noTitle" translatesAutoresizingMaskIntoConstraints="NO" id="q3D-DV-5Hq">
                                 <rect key="frame" x="0.0" y="46" width="310" height="5"/>
                                 <color key="borderColor" white="0.0" alpha="0.41999999999999998" colorSpace="calibratedWhite"/>
@@ -76,6 +63,20 @@
                                 </buttonCell>
                                 <connections>
                                     <action selector="login:" target="-2" id="kpm-mP-YYv"/>
+                                </connections>
+                            </button>
+                            <button horizontalHuggingPriority="750" verticalHuggingPriority="750" translatesAutoresizingMaskIntoConstraints="NO" id="GkD-se-RQD" userLabel="Settings Button">
+                                <rect key="frame" x="282" y="11" width="25" height="25"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="21" id="7Zw-vd-fdz"/>
+                                    <constraint firstAttribute="width" constant="21" id="LMh-lF-FDr"/>
+                                </constraints>
+                                <buttonCell key="cell" type="help" bezelStyle="helpButton" image="testSettings" imagePosition="only" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="kqh-Ou-the">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="settingsButtonAction:" target="-2" id="TIh-d3-Afn"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -153,6 +154,9 @@
                     <constraint firstItem="oBX-mg-Off" firstAttribute="leading" secondItem="bER-rS-6OL" secondAttribute="trailing" constant="17" id="xLH-WM-lvS"/>
                 </constraints>
             </view>
+            <connections>
+                <outlet property="delegate" destination="-2" id="qeW-4d-wD4"/>
+            </connections>
             <point key="canvasLocation" x="505" y="178"/>
         </window>
         <menu id="R1c-8h-F0a">
@@ -170,6 +174,9 @@
                 <menuItem isSeparatorItem="YES" id="LyU-7w-HRC"/>
                 <menuItem title="Quit FastCapture" id="uFo-o4-WRG">
                     <modifierMask key="keyEquivalentModifierMask"/>
+                    <connections>
+                        <action selector="quitFastCapture:" target="-2" id="2Gg-Ye-OIi"/>
+                    </connections>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="808" y="267.5"/>

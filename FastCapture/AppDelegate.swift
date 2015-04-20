@@ -9,17 +9,19 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelControllerDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelControllerDelegate, NSUserNotificationCenterDelegate {
 
     @IBOutlet weak var window: NSWindow!
-    var kContextActivePanel = UnsafeMutablePointer<()>()
+    var kContextActivePanel = UnsafeMutablePointer<Void>()
     var menubarController: MenubarController?
     let clientId = "d61102426af1a52"
     
     private var _panelController: PanelController?
     var panelController: PanelController {
-        if self._panelController == nil {
-            self._panelController = PanelController(delegate: self)
+        if _panelController == nil {
+            _panelController = PanelController(delegate: self)
+            
+            _panelController?.addObserver(self, forKeyPath: "_hasActivePanel", options: NSKeyValueObservingOptions.allZeros, context: kContextActivePanel)
         }
         return self._panelController!
     }
@@ -28,17 +30,19 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         // Uncomment following lines to reset user defaults
 
-        //let appDomain = NSBundle.mainBundle().bundleIdentifier!
-        //NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
+        let appDomain = NSBundle.mainBundle().bundleIdentifier!
+        NSUserDefaults.standardUserDefaults().removePersistentDomainForName(appDomain)
 
         if !NSUserDefaults.standardUserDefaults().boolForKey("hasLaunchedOnce") {
             NSUserDefaults.standardUserDefaults().setBool(true, forKey: "hasLaunchedOnce")
             setupDefaults()
         }
-                
-        ScreenCapture.sharedInstance.createDirectory()
         
-        ScreenCapture.sharedInstance.readDirectory(nil)
+        NSUserNotificationCenter.defaultUserNotificationCenter().delegate = self
+                
+        DirectoryManager.sharedInstance.createDirectory()
+        
+        DirectoryManager.sharedInstance.readDirectory(nil)
         
         IMGSession.anonymousSessionWithClientID(clientId, withDelegate: self)
 
@@ -55,7 +59,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         )
     }
     
-    /** Gets called when the App launches/opens via URL. */
+    // Gets called when the App launches/opens via URL.
     func handleURLEvent(event: NSAppleEventDescriptor, withReply reply: NSAppleEventDescriptor) {
         if let urlString = event.paramDescriptorForKeyword(AEKeyword(keyDirectObject))?.stringValue {
             if let url = NSURL(string: urlString) {
@@ -69,6 +73,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     
     func applicationWillTerminate(aNotification: NSNotification) {
         self.menubarController = nil
+        self.panelController.removeObserver(self, forKeyPath: "_hasActivePanel")
+        
+        let url: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DesktopDirectory, inDomains: .UserDomainMask).first as! NSURL
+        
+        DirectoryManager.sharedInstance.setScreenCaptureDefaultFolder(url)
     }
     
     
@@ -125,6 +134,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         User.sharedInstance.username = user.username
         User.sharedInstance.accountID = user.accountID
         User.sharedInstance.isLoggedIn = true
+        self.panelController.window?.viewsNeedDisplay = true
+        println("Logged in")
     }
     
     func imgurSessionNewNotifications(freshNotifications: [AnyObject]!) {
@@ -145,6 +156,17 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         self.panelController.hasActivePanel = self.menubarController!.hasActiveIcon
     }
     
+    //MARK: - Observers
+    
+    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
+        if context == kContextActivePanel {
+            self.menubarController!.hasActiveIcon = self.panelController.hasActivePanel
+        }
+        else {
+            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
+        }
+    }
+    
     
     //MARK: - PanelControllerDelegate
     func statusItemViewForPanelViewController() -> StatusItemView {
@@ -160,6 +182,10 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         
         NSUserDefaults.standardUserDefaults().registerDefaults(userDefaultsValuesDict as [NSObject : AnyObject])
         NSUserDefaultsController.sharedUserDefaultsController().initialValues = userDefaultsValuesDict as [NSObject: AnyObject]
+    }
+    
+    func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {
+        return true
     }
 
 }

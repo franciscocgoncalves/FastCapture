@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		26A1034FC46574020FA021BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868F9CBD953A3D011E393F4D /* libPods.a */; };
+		791354051AE56926003F2523 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791354041AE56926003F2523 /* DirectoryManager.swift */; };
 		793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261BB1AD2F02C00D62313 /* AppDelegate.swift */; };
 		793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 793261BD1AD2F02D00D62313 /* Images.xcassets */; };
 		793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793261BF1AD2F02E00D62313 /* MainMenu.xib */; };
@@ -35,6 +36,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		791354041AE56926003F2523 /* DirectoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
 		793261B61AD2F02A00D62313 /* FastCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		793261BA1AD2F02B00D62313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		793261BB1AD2F02C00D62313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -181,6 +183,7 @@
 			isa = PBXGroup;
 			children = (
 				793261D91AD2F0C100D62313 /* ScreenCapture.swift */,
+				791354041AE56926003F2523 /* DirectoryManager.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -333,6 +336,7 @@
 				793261E91AD2F11800D62313 /* MenubarController.swift in Sources */,
 				793261DB1AD2F0C100D62313 /* ScreenCapture.swift in Sources */,
 				793261E31AD2F0FD00D62313 /* Panel.swift in Sources */,
+				791354051AE56926003F2523 /* DirectoryManager.swift in Sources */,
 				793261EA1AD2F11800D62313 /* PanelController.swift in Sources */,
 				793261E41AD2F0FD00D62313 /* PanelBar.swift in Sources */,
 				793261E51AD2F0FD00D62313 /* StatusItemView.swift in Sources */,

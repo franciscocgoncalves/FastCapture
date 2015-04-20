@@ -28,11 +28,12 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
     @IBOutlet weak var userName: NSTextField!
     @IBOutlet var settingsMenu: NSMenu!
     @IBOutlet weak var takeFirstScreenCaptureLabel: NSTextField!
+    @IBOutlet weak var loginButton: NSButton!
     var delegate: PanelControllerDelegate?
     
     var lastScreenCaptureURL: NSURL?
     
-    private var _hasActivePanel: Bool = false
+    dynamic var _hasActivePanel: Bool = false
     var hasActivePanel: Bool {
         get {
             return _hasActivePanel
@@ -41,7 +42,10 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
             if _hasActivePanel != newValue {
                 _hasActivePanel = newValue
                 
+                self.didChangeValueForKey("_hasActivePanel")
+                
                 if _hasActivePanel {
+                    let panel: NSPanel = self.window as! NSPanel
                     openPanel()
                 }
                 else {
@@ -62,14 +66,12 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         
         var panel: NSPanel = self.window as! NSPanel
         panel.acceptsMouseMovedEvents = true
-        panel.becomeKeyWindow()
-        panel.floatingPanel = true
-        panel.level = kCGMaximumWindowLevelKey
+        panel.level = kCGPopUpMenuWindowLevelKey
         panel.opaque = false
-        panel.worksWhenModal = true
         panel.backgroundColor = NSColor.clearColor()
     }
     
+    //MARK: - UI
     func openPanel() {
         let panel: NSPanel = self.window as! NSPanel
         
@@ -140,6 +142,50 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         return statusRect
     }
     
+    func setupView () {
+        var fileURL: NSURL? = lastScreenCaptureURL
+        
+        if User.sharedInstance.isLoggedIn {
+            loginButton.hidden = true
+        } else {
+            loginButton.hidden = false
+        }
+        
+        if fileURL == nil {
+            fileURL = NSUserDefaults.standardUserDefaults().URLForKey("lastCapture")
+            
+            if fileURL == nil {
+                lastScreenCaptureLabel!.stringValue = ""
+                lastScreenCapture.hidden = true
+                
+                copyLastCaptureToClipboardButton.hidden = true
+                
+                takeFirstScreenCaptureLabel.hidden = false
+                return
+            }
+        }
+        
+        takeFirstScreenCaptureLabel.hidden = true
+        lastScreenCapture.hidden = false
+        copyLastCaptureToClipboardButton.hidden = false
+        
+        lastScreenCaptureLabel!.stringValue = "Last uploaded: \(fileURL!.description)"
+        
+        let urlRequest = NSURLRequest(URL: fileURL!)
+        var requestOperation = AFHTTPRequestOperation(request: urlRequest)
+        requestOperation.responseSerializer = AFImageResponseSerializer()
+        
+        requestOperation.setCompletionBlockWithSuccess({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            
+            self.lastScreenCapture.image = responseObject as? NSImage
+            
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                println(error)
+        })
+        
+        requestOperation.start()
+    }
+    
     //MARK: - NSWindowDelegate
     func windowWillClose(notification: NSNotification) {
         hasActivePanel = false
@@ -178,41 +224,7 @@ class PanelController: NSWindowController, NSWindowDelegate, ScreenCaptureDelega
         User.sharedInstance.login()
     }
     
-    func setupView () {
-        var fileURL: NSURL? = lastScreenCaptureURL
-        
-        if fileURL == nil {
-            fileURL = NSUserDefaults.standardUserDefaults().URLForKey("lastCapture")
-            
-            if fileURL == nil {
-                lastScreenCaptureLabel!.stringValue = ""
-                lastScreenCapture.hidden = true
-                
-                copyLastCaptureToClipboardButton.hidden = true
-                
-                takeFirstScreenCaptureLabel.hidden = false
-                return
-            }
-        }
-        
-        takeFirstScreenCaptureLabel.hidden = true
-        lastScreenCapture.hidden = false
-        copyLastCaptureToClipboardButton.hidden = false
-        
-        lastScreenCaptureLabel!.stringValue = "Last uploaded: \(fileURL!.description)"
-    
-        let urlRequest = NSURLRequest(URL: fileURL!)
-        var requestOperation = AFHTTPRequestOperation(request: urlRequest)
-        requestOperation.responseSerializer = AFImageResponseSerializer()
-        
-        requestOperation.setCompletionBlockWithSuccess({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
-            
-            self.lastScreenCapture.image = responseObject as? NSImage
-            
-            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-            println(error)
-        })
-        
-        requestOperation.start()
+    @IBAction func quitFastCapture(sender: NSMenuItem) {
+        NSApplication.sharedApplication().terminate(nil)
     }
 }
