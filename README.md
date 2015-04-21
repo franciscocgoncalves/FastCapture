@@ -3,6 +3,9 @@ Free and Open Source screen capture app for Yosemite written in Swift.
 
 Login with your Imgur account to have full access to your screenshots!
 
+## Download
+[Here!](https://github.com/franciscocgoncalves/FastCapture/raw/master/FastCapture.zip)
+
 ## Installation
   If you get an error saying that I'm not an Identified Developer, please try to open the app with Alt+Click or follow [this]( https://support.apple.com/kb/PH14369?viewlocale=en_US&locale=pt_PT ) instructions.
 
