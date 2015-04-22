@@ -14,7 +14,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
     @IBOutlet weak var window: NSWindow!
     var kContextActivePanel = UnsafeMutablePointer<Void>()
     var menubarController: MenubarController?
-    let clientId = "d61102426af1a52"
+    let clientId = Keys().anonymousClientId
     
     private var _panelController: PanelController?
     var panelController: PanelController {

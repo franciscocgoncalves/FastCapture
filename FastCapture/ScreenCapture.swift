@@ -74,6 +74,10 @@ class ScreenCapture: NSObject {
             //TODO: - set the url on the PanelController, remove the progress bar, download this image
             }, progress: nil, failure: { (error: NSError!) -> Void in
                 println("Error: \(error)")
+
+                var alert = NSAlert()
+                alert.messageText = error.description
+                alert.runModal()
             })
     }
     

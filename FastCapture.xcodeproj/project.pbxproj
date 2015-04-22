@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		26A1034FC46574020FA021BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868F9CBD953A3D011E393F4D /* libPods.a */; };
 		791354051AE56926003F2523 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791354041AE56926003F2523 /* DirectoryManager.swift */; };
+		79281D651AE7C6B000B4FD34 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79281D641AE7C6B000B4FD34 /* Keys.plist */; };
+		79281D671AE7C88500B4FD34 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79281D661AE7C88500B4FD34 /* Keys.swift */; };
 		793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261BB1AD2F02C00D62313 /* AppDelegate.swift */; };
 		793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 793261BD1AD2F02D00D62313 /* Images.xcassets */; };
 		793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793261BF1AD2F02E00D62313 /* MainMenu.xib */; };
@@ -36,6 +38,8 @@
 
 /* Begin PBXFileReference section */
 		791354041AE56926003F2523 /* DirectoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
+		79281D641AE7C6B000B4FD34 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
+		79281D661AE7C88500B4FD34 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		793261B61AD2F02A00D62313 /* FastCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		793261BA1AD2F02B00D62313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		793261BB1AD2F02C00D62313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -128,6 +132,7 @@
 			children = (
 				793261EB1AD2F12000D62313 /* UserDefaults.plist */,
 				793261BA1AD2F02B00D62313 /* Info.plist */,
+				79281D641AE7C6B000B4FD34 /* Keys.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -181,6 +186,7 @@
 			children = (
 				793261D91AD2F0C100D62313 /* ScreenCapture.swift */,
 				791354041AE56926003F2523 /* DirectoryManager.swift */,
+				79281D661AE7C88500B4FD34 /* Keys.swift */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -280,6 +286,7 @@
 				793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */,
 				793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */,
 				793261EC1AD2F12000D62313 /* UserDefaults.plist in Resources */,
+				79281D651AE7C6B000B4FD34 /* Keys.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -339,6 +346,7 @@
 				793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */,
 				793261E21AD2F0FD00D62313 /* BackgroundView.swift in Sources */,
 				793261DC1AD2F0C100D62313 /* User.swift in Sources */,
+				79281D671AE7C88500B4FD34 /* Keys.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
