@@ -11,8 +11,9 @@ Login with your Imgur account to have full access to your screenshots!
   2. Enter the directory: <code>cd FastCapture</code>
   3. Install the dependencies: <code>pod install</code>
   4. Create file Keys.plist
-  5. Generate anonymous and authenticated with callback keys[Imgur Keys](http://api.imgur.com/oauth2/addclient)
-  6. Add following keys to plist: <code>"anonymousClientId"</code>, <code>"authenticatedClientId"</code>, <code>"authenticatedSecret"</code>
+  5. Go to [Imgur Keys](http://api.imgur.com/oauth2/addclient)
+  7. Generate anonymous and authenticated with callback keys
+  8. Add following keys to Keys.plist: <code>"anonymousClientId"</code>, <code>"authenticatedClientId"</code>, <code>"authenticatedSecret"</code>
 
 ## Installation
   If you get an error saying that I'm not an Identified Developer, please try to open the app with Alt+Click or follow [this]( https://support.apple.com/kb/PH14369?viewlocale=en_US&locale=pt_PT ) instructions.
