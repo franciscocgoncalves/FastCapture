@@ -20,14 +20,17 @@ PODS:
   - CDEvents (1.2.2)
   - ImgurSession (1.2):
     - AFNetworking
+  - PureLayout (2.0.6)
 
 DEPENDENCIES:
   - CDEvents (~> 1.2)
   - ImgurSession (~> 1.2)
+  - PureLayout (~> 2.0)
 
 SPEC CHECKSUMS:
   AFNetworking: fefbce9660acb17f48ae0011292d4da0f457bf36
   CDEvents: f311f23de13414f4b3625f1a663b2e1d9a85d982
   ImgurSession: 3ded7eec93121fcf8d1e9f3f1783b8d764c846d3
+  PureLayout: f25f0bb904d5ccfe6e31da3cb869185259f02e0d
 
 COCOAPODS: 0.35.0
