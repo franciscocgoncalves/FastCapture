@@ -9,22 +9,69 @@
 import Cocoa
 
 @NSApplicationMain
-class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelControllerDelegate, NSUserNotificationCenterDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, NSUserNotificationCenterDelegate {
 
-    @IBOutlet weak var window: NSWindow!
-    var kContextActivePanel = UnsafeMutablePointer<Void>()
-    var menubarController: MenubarController?
     let clientId = Keys().anonymousClientId
     
-    private var _panelController: PanelController?
-    var panelController: PanelController {
-        if _panelController == nil {
-            _panelController = PanelController(delegate: self)
-            
-            _panelController?.addObserver(self, forKeyPath: "_hasActivePanel", options: NSKeyValueObservingOptions.allZeros, context: kContextActivePanel)
-        }
-        return self._panelController!
+    let statusItem: NSStatusItem
+    let popover: NSPopover
+    var popoverMonitor: AnyObject?
+    
+    override init() {
+        popover = NSPopover()
+        popover.contentViewController = PanelViewController()
+        statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(24)
+        
+        super.init()
+        setupStatusButton()
     }
+    
+    func setupStatusButton() {
+        if let statusButton = statusItem.button {
+            statusButton.image = NSImage(named: "statusItem")
+            statusButton.alternateImage = NSImage(named: "statusItemHighlighted")
+            
+            //Hack to keep statusButton highlighted while popover is open.
+            let dummyControl = DummyControl()
+            dummyControl.frame = statusButton.bounds
+            statusButton.addSubview(dummyControl)
+            statusButton.superview!.subviews = [statusButton, dummyControl]
+            dummyControl.action = "onPress:"
+            dummyControl.target = self
+        }
+    }
+    
+    
+    func onPress(sender: AnyObject) {
+        if popover.shown == false {
+            openPopover()
+        }
+        else {
+            closePopover()
+        }
+    }
+    
+    func openPopover() {
+        if let statusButton = statusItem.button {
+            statusButton.highlight(true)
+            popover.showRelativeToRect(NSZeroRect, ofView: statusButton, preferredEdge: NSRectEdge.MinY)
+            popoverMonitor = NSEvent.addGlobalMonitorForEventsMatchingMask(.LeftMouseDownMask, handler: { (event: NSEvent!) -> Void in
+                self.closePopover()
+            })
+        }
+    }
+    
+    func closePopover() {
+        popover.close()
+        if let statusButton = statusItem.button {
+            statusButton.highlight(false)
+        }
+        if let monitor : AnyObject = popoverMonitor {
+            NSEvent.removeMonitor(monitor)
+            popoverMonitor = nil
+        }
+    }
+    
     
     //MARK: - NSApplicationDelegate 
     func applicationDidFinishLaunching(aNotification: NSNotification) {
@@ -45,10 +92,16 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         DirectoryManager.sharedInstance.readDirectory(nil)
         
         IMGSession.anonymousSessionWithClientID(clientId, withDelegate: self)
-
-        menubarController = MenubarController()
     }
     
+    
+    func applicationWillTerminate(aNotification: NSNotification) {
+        let url: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DesktopDirectory, inDomains: .UserDomainMask).first!
+        
+        DirectoryManager.sharedInstance.setScreenCaptureDefaultFolder(url)
+    }
+    
+    //MARK: - Handle URLs
     // register app to get notified when launched via URL
     func applicationWillFinishLaunching(notification: NSNotification) {
         NSAppleEventManager.sharedAppleEventManager().setEventHandler(
@@ -71,16 +124,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         }
     }
     
-    func applicationWillTerminate(aNotification: NSNotification) {
-        self.menubarController = nil
-        self.panelController.removeObserver(self, forKeyPath: "_hasActivePanel")
-        
-        let url: NSURL = NSFileManager.defaultManager().URLsForDirectory(.DesktopDirectory, inDomains: .UserDomainMask).first as! NSURL
-        
-        DirectoryManager.sharedInstance.setScreenCaptureDefaultFolder(url)
-    }
-    
-    
     //MARK: - ImgurSession
     func handleImgurLogin(url: NSURL) {
         
@@ -96,8 +139,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         
         let pinCode: String? = params.objectForKey("code") as? String
         if pinCode == nil {
-            var error = params["error"] as? String
-            println("Error: \(error)")
+            let error = params["error"] as? String
+            print("Error: \(error)")
         }
         
         IMGSession.sharedInstance().authenticateWithCode(pinCode)
@@ -133,7 +176,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         User.sharedInstance.username = user.username
         User.sharedInstance.accountID = user.accountID
         User.sharedInstance.isLoggedIn = true
-        self.panelController.window?.viewsNeedDisplay = true
     }
     
     func imgurSessionNewNotifications(freshNotifications: [AnyObject]!) {
@@ -148,29 +190,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         //TODO: - implement this
     }
     
-    //MARK: - Actions
-    func togglePanel(sender: AnyObject) {
-        self.menubarController!.hasActiveIcon = !self.menubarController!.hasActiveIcon
-        self.panelController.hasActivePanel = self.menubarController!.hasActiveIcon
-    }
-    
-    //MARK: - Observers
-    
-    override func observeValueForKeyPath(keyPath: String, ofObject object: AnyObject, change: [NSObject : AnyObject], context: UnsafeMutablePointer<Void>) {
-        if context == kContextActivePanel {
-            self.menubarController!.hasActiveIcon = self.panelController.hasActivePanel
-        }
-        else {
-            super.observeValueForKeyPath(keyPath, ofObject: object, change: change, context: context)
-        }
-    }
-    
-    
-    //MARK: - PanelControllerDelegate
-    func statusItemViewForPanelViewController() -> StatusItemView {
-        return self.menubarController!.statusItemView
-    }
-    
+    //MARK: - Setup NSDefaults
     func setupDefaults() {
         let userDefaultsValuesPath: NSString
         let userDefaultsValuesDict: NSDictionary
@@ -178,8 +198,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, PanelCon
         userDefaultsValuesPath = NSBundle.mainBundle().pathForResource("UserDefaults", ofType: "plist")!
         userDefaultsValuesDict = NSDictionary(contentsOfFile: userDefaultsValuesPath as String)!
         
-        NSUserDefaults.standardUserDefaults().registerDefaults(userDefaultsValuesDict as [NSObject : AnyObject])
-        NSUserDefaultsController.sharedUserDefaultsController().initialValues = userDefaultsValuesDict as [NSObject: AnyObject]
+        NSUserDefaults.standardUserDefaults().registerDefaults(userDefaultsValuesDict as! [String : AnyObject])
+        NSUserDefaultsController.sharedUserDefaultsController().initialValues = userDefaultsValuesDict as? [String: AnyObject]
     }
     
     func userNotificationCenter(center: NSUserNotificationCenter, shouldPresentNotification notification: NSUserNotification) -> Bool {

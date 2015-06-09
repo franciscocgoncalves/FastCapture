@@ -42,17 +42,16 @@ class ScreenCapture: NSObject {
     
     func run() {
         let urlsWatched: [AnyObject] = NSArray(object: DirectoryManager.sharedInstance.url!) as [AnyObject]
-        let creationFlags = kCDEventsDefaultEventStreamFlags;
         let runLoop: NSRunLoop = NSRunLoop.currentRunLoop()
         
-        var block: CDEventsEventBlock? = { (var watcher: CDEvents!, var event: CDEvent!) -> Void in
+        let block: CDEventsEventBlock? = { (let watcher: CDEvents!,  event: CDEvent!) -> Void in
             DirectoryManager.sharedInstance.readDirectory({(fileURL: NSURL) in
                 //TODO: - uncomment following line, check connectivity
                 self.uploadImage(fileURL)
                 })
         }
         
-        dispatch_async(dispatch_get_global_queue(Int(QOS_CLASS_USER_INTERACTIVE.value), 0)) {
+        dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INTERACTIVE, 0)) {
             NSRunLoop.currentRunLoop().run()
 
             self.events = CDEvents(URLs: urlsWatched, block: block, onRunLoop: runLoop, sinceEventIdentifier: kCDEventsSinceEventNow, notificationLantency: 0, ignoreEventsFromSubDirs: true, excludeURLs: [], streamCreationFlags: kCDEventsDefaultEventStreamFlags)
@@ -73,9 +72,9 @@ class ScreenCapture: NSObject {
             
             //TODO: - set the url on the PanelController, remove the progress bar, download this image
             }, progress: nil, failure: { (error: NSError!) -> Void in
-                println("Error: \(error)")
+                print("Error: \(error)", appendNewline: true)
 
-                var alert = NSAlert()
+                let alert = NSAlert()
                 alert.messageText = error.description
                 alert.runModal()
             })
@@ -85,12 +84,19 @@ class ScreenCapture: NSObject {
         let predicate = NSPredicate(format: "pathExtension == 'png'", argumentArray: nil)
         for fileURL in contents!.filteredArrayUsingPredicate(predicate) {
             var name: AnyObject?
-            var error: NSError?
-            fileURL.getResourceValue(&name, forKey: NSURLNameKey, error: &error)
-            //TODO:  check if there was any error. return if it does
             
-            var key = name! as! String
-            var object: NSURL? = cache.objectForKey(key) as? NSURL
+            do {
+                try (fileURL as! NSURL).getResourceValue(&name, forKey: NSURLNameKey)
+
+            }
+            catch let error as NSError {
+                //TODO: check if there was any error. return if it does
+                print("Error: \(error.domain)")
+            }
+            
+            
+            let key = name! as! String
+            let object: NSURL? = cache.objectForKey(key) as? NSURL
             
             if object == nil {
                 self.cache.setObject(fileURL, forKey: key)
