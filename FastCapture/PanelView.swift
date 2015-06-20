@@ -9,6 +9,14 @@
 import Cocoa
 
 class PanelView: NSView {
+    var delegate: PanelViewDelegate?
+    var lastScreenCaptureURL: NSURL? {
+        didSet {
+            downloadLastScreencapture(lastScreenCaptureURL!)
+            lastScreenCaptureLabel.stringValue = "Last uploaded: \(lastScreenCaptureURL!.description)"
+        }
+    }
+    
     var _titleLabel: NSTextField?
     var titleLabel: NSTextField {
         if(_titleLabel == nil) {
@@ -78,13 +86,13 @@ class PanelView: NSView {
     }
     
     
-    var _lastScreenCaptureView: NSImageView?
-    var lastScreenCaptureView: NSImageView {
-        if(_lastScreenCaptureView == nil) {
-            _lastScreenCaptureView = NSImageView(forAutoLayout: ())
+    var _lastScreenCaptureImageView: NSImageView?
+    var lastScreenCaptureImageView: NSImageView {
+        if(_lastScreenCaptureImageView == nil) {
+            _lastScreenCaptureImageView = NSImageView(forAutoLayout: ())
         }
         
-        return _lastScreenCaptureView!
+        return _lastScreenCaptureImageView!
     }
     
     var lastScreenCaptureImage: NSImage?
@@ -94,8 +102,6 @@ class PanelView: NSView {
         if (_lastScreenCaptureLabel == nil) {
             _lastScreenCaptureLabel = NSTextField(forAutoLayout: ())
             
-            //TODO: - remove next line
-            _lastScreenCaptureLabel!.stringValue = "Last uploaded: http://www.google.com"
             _lastScreenCaptureLabel!.editable = false
             _lastScreenCaptureLabel!.bezeled = false
             _lastScreenCaptureLabel!.drawsBackground = false
@@ -128,16 +134,16 @@ class PanelView: NSView {
         if (_albumsListButton == nil) {
             _albumsListButton = NSButton(forAutoLayout: ())
             
-            _albumsListButton!.image = NSImage(named: "save")
-            _albumsListButton!.alternateImage = NSImage(named: "saveHighlighted")
+            _albumsListButton!.image = NSImage(named: "testList")
+            _albumsListButton!.alternateImage = NSImage(named: "testListHighlighted")
             
-            _albumsListButton!.action = Selector("copyLastScreenCaptureAction")
+            _albumsListButton!.action = Selector("albumListAction")
             _albumsListButton!.target = self
             
             (_albumsListButton!.cell as? NSButtonCell)?.imageScaling = .ScaleProportionallyUpOrDown
             
             _albumsListButton?.bordered = false
-            _albumsListButton?.setButtonType(NSButtonType.MomentaryChangeButton)
+            _albumsListButton?.setButtonType(.MomentaryChangeButton)
             _albumsListButton?.imagePosition = .ImageOnly
         }
         return _albumsListButton!
@@ -149,9 +155,9 @@ class PanelView: NSView {
             _settingsButton = NSButton(forAutoLayout: ())
             
             _settingsButton!.image = NSImage(named: "testSettings")
-            _settingsButton!.alternateImage = NSImage(named: "saveHighlighted")
+            _settingsButton!.alternateImage = NSImage(named: "testSettings")
             
-            _settingsButton!.action = Selector("copyLastScreenCaptureAction")
+            _settingsButton!.action = Selector("settingsButtonAction")
             _settingsButton!.target = self
             
             (_settingsButton!.cell as? NSButtonCell)?.imageScaling = .ScaleProportionallyUpOrDown
@@ -163,10 +169,28 @@ class PanelView: NSView {
         return _settingsButton!
     }
     
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-
-        // Drawing code here.
+    var _settingsMenu: NSMenu?
+    var settingsMenu: NSMenu {
+        if _settingsMenu == nil {
+            _settingsMenu = NSMenu()
+            
+            _settingsMenu?.addItemWithTitle("Settings", action: "settings", keyEquivalent: "")
+            _settingsMenu?.addItemWithTitle("Report a bug", action: "reportABug", keyEquivalent: "")
+            _settingsMenu?.addItemWithTitle("Donate!", action: "donate", keyEquivalent: "")
+            _settingsMenu?.addItemWithTitle("Quit FastCapture", action: "quitFastCapture", keyEquivalent: "")
+        }
+        
+        return _settingsMenu!
+    }
+    
+    override func updateConstraints() {
+        autoPinEdgesToSuperviewEdgesWithInsets(NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+        
+        drawTitleView()
+        drawBottomView();
+        drawLastCapturedView()
+        
+        super.updateConstraints()
     }
     
     //MARK: - Draw Views
@@ -212,11 +236,8 @@ class PanelView: NSView {
         placeholderView.autoPinEdgeToSuperviewEdge(.Left)
         placeholderView.autoPinEdgeToSuperviewEdge(.Right)
         
-        lastScreenCaptureImage = NSImage(named: "AppIcon")
-        lastScreenCaptureView.image = lastScreenCaptureImage
         
-        
-        guard lastScreenCaptureImage != nil else {
+        guard lastScreenCaptureURL != nil else {
             drawTakeFirstScreenCaptureLabel()
             return
         }
@@ -230,7 +251,7 @@ class PanelView: NSView {
     func drawTitleLabel () {
         self.addSubview(titleLabel)
         titleLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: 20.0)
-        titleLabel.autoAlignAxis(.Vertical, toSameAxisOfView: view)
+        titleLabel.autoAlignAxis(ALAxis.Vertical, toSameAxisOfView: self)
     }
     
     func drawLineTop () {
@@ -267,9 +288,9 @@ class PanelView: NSView {
     }
     
     func drawLastScreenCaptureImage () {
-        lastScreenCaptureImagePlaceholderView.addSubview(lastScreenCaptureView)
+        lastScreenCaptureImagePlaceholderView.addSubview(lastScreenCaptureImageView)
         
-        lastScreenCaptureView.autoCenterInSuperview()
+        lastScreenCaptureImageView.autoCenterInSuperview()
     }
     
     func drawLastScreenCaptureLabel () {
@@ -286,6 +307,59 @@ class PanelView: NSView {
         copyLastScreenCaptureButton.autoPinEdgeToSuperviewEdge(.Right, withInset: 15)
         copyLastScreenCaptureButton.autoAlignAxis(.Horizontal, toSameAxisOfView: lastScreenCaptureLabel)
     }
-
     
+    func copyLastScreenCaptureAction () {
+        delegate?.copyLastScreenCaptureAction()
+    }
+    
+    func albumListAction () {
+        delegate?.albumListAction()
+    }
+    
+    func settingsButtonAction() {
+        NSMenu.popUpContextMenu(settingsMenu, withEvent: NSApp.currentEvent!, forView: self)
+    }
+    
+    func settings() {
+        delegate?.settings()
+    }
+    
+    func donate() {
+        delegate?.donate()
+    }
+    
+    func reportABug() {
+        delegate?.reportABug()
+    }
+    
+    func quitFastCapture() {
+        delegate?.quitFastCapture()
+    }
+    
+    func downloadLastScreencapture (fileURL: NSURL) {
+        let urlRequest = NSURLRequest(URL: fileURL)
+        let requestOperation = AFHTTPRequestOperation(request: urlRequest)
+        requestOperation.responseSerializer = AFImageResponseSerializer()
+        
+        requestOperation.setCompletionBlockWithSuccess({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            
+            self.lastScreenCaptureImageView.image = responseObject as? NSImage
+            self.needsUpdateConstraints = true
+           // self.updateConstraints()
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                
+        })
+        
+        requestOperation.start()
+    }
+}
+
+protocol PanelViewDelegate {
+    func copyLastScreenCaptureAction()
+    func albumListAction()
+    func login()
+    func settings()
+    func donate()
+    func reportABug()
+    func quitFastCapture()
 }

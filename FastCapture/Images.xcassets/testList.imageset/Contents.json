@@ -1,17 +1,13 @@
 {
   "images" : [
     {
-      "idiom" : "universal"
+      "idiom" : "universal",
+      "filename" : "list.png",
+      "scale" : "1x"
     },
     {
       "idiom" : "universal",
-      "scale" : "1x",
-      "filename" : "fastcapture_lightning_white_22x22.png"
-    },
-    {
-      "idiom" : "universal",
-      "scale" : "2x",
-      "filename" : "fastcapture_lightning_white_44x44.png"
+      "scale" : "2x"
     },
     {
       "idiom" : "universal",
