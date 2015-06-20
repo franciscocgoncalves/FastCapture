@@ -10,10 +10,11 @@ import Cocoa
 
 class PanelView: NSView {
     var delegate: PanelViewDelegate?
+    var constraintsSet = false
+    
     var lastScreenCaptureURL: NSURL? {
         didSet {
-            downloadLastScreencapture(lastScreenCaptureURL!)
-            lastScreenCaptureLabel.stringValue = "Last uploaded: \(lastScreenCaptureURL!.description)"
+            lastScreenCaptureLabel.stringValue = lastScreenCaptureURL!.description
         }
     }
     
@@ -22,7 +23,8 @@ class PanelView: NSView {
         if(_titleLabel == nil) {
             _titleLabel = NSTextField(forAutoLayout: ())
             
-            _titleLabel!.stringValue = "FastCapture"
+            _titleLabel!.stringValue = "Fast Capture"
+            _titleLabel!.font = NSFont.boldSystemFontOfSize(13)
             _titleLabel!.editable = false
             _titleLabel!.bezeled = false
             _titleLabel!.drawsBackground = false
@@ -125,6 +127,7 @@ class PanelView: NSView {
             _copyLastScreenCaptureButton?.bordered = false
             _copyLastScreenCaptureButton?.setButtonType(NSButtonType.MomentaryChangeButton)
             _copyLastScreenCaptureButton?.imagePosition = .ImageOnly
+            _copyLastScreenCaptureButton?.toolTip = "Share!"
         }
         return _copyLastScreenCaptureButton!
     }
@@ -184,12 +187,13 @@ class PanelView: NSView {
     }
     
     override func updateConstraints() {
-        autoPinEdgesToSuperviewEdgesWithInsets(NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
-        
-        drawTitleView()
-        drawBottomView();
-        drawLastCapturedView()
-        
+        if !constraintsSet {
+            autoPinEdgesToSuperviewEdgesWithInsets(NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
+            drawTitleView()
+            drawBottomView();
+            drawLastCapturedView()
+            constraintsSet = true
+        }
         super.updateConstraints()
     }
     
@@ -251,7 +255,7 @@ class PanelView: NSView {
     func drawTitleLabel () {
         self.addSubview(titleLabel)
         titleLabel.autoPinEdgeToSuperviewEdge(.Top, withInset: 20.0)
-        titleLabel.autoAlignAxis(ALAxis.Vertical, toSameAxisOfView: self)
+        titleLabel.autoAlignAxisToSuperviewAxis(.Vertical)
     }
     
     func drawLineTop () {
@@ -279,10 +283,10 @@ class PanelView: NSView {
     func drawLastScreenCaptureImagePlaceholder () {
         placeholderView.addSubview(lastScreenCaptureImagePlaceholderView)
         
-        lastScreenCaptureImagePlaceholderView.autoPinEdgeToSuperviewEdge(.Top)
-        lastScreenCaptureImagePlaceholderView.autoPinEdge(.Bottom, toEdge: .Top, ofView: lastScreenCaptureLabel)
-        lastScreenCaptureImagePlaceholderView.autoPinEdgeToSuperviewEdge(.Left)
-        lastScreenCaptureImagePlaceholderView.autoPinEdgeToSuperviewEdge(.Right)
+        lastScreenCaptureImagePlaceholderView.autoPinEdgeToSuperviewEdge(.Top, withInset: 10)
+        lastScreenCaptureImagePlaceholderView.autoPinEdge(.Bottom, toEdge: .Top, ofView: lastScreenCaptureLabel, withOffset: -10)
+        lastScreenCaptureImagePlaceholderView.autoPinEdgeToSuperviewEdge(.Left, withInset: 10)
+        lastScreenCaptureImagePlaceholderView.autoPinEdgeToSuperviewEdge(.Right, withInset: 10)
         
         drawLastScreenCaptureImage()
     }
@@ -290,7 +294,8 @@ class PanelView: NSView {
     func drawLastScreenCaptureImage () {
         lastScreenCaptureImagePlaceholderView.addSubview(lastScreenCaptureImageView)
         
-        lastScreenCaptureImageView.autoCenterInSuperview()
+        lastScreenCaptureImageView.imageScaling = NSImageScaling.ScaleProportionallyDown
+        lastScreenCaptureImageView.autoPinEdgesToSuperviewEdgesWithInsets(NSEdgeInsets(top: 0, left: 0, bottom: 0, right: 0))
     }
     
     func drawLastScreenCaptureLabel () {
@@ -307,6 +312,11 @@ class PanelView: NSView {
         copyLastScreenCaptureButton.autoPinEdgeToSuperviewEdge(.Right, withInset: 15)
         copyLastScreenCaptureButton.autoAlignAxis(.Horizontal, toSameAxisOfView: lastScreenCaptureLabel)
     }
+    
+    func login () {
+        delegate?.login()
+    }
+
     
     func copyLastScreenCaptureAction () {
         delegate?.copyLastScreenCaptureAction()
@@ -336,22 +346,6 @@ class PanelView: NSView {
         delegate?.quitFastCapture()
     }
     
-    func downloadLastScreencapture (fileURL: NSURL) {
-        let urlRequest = NSURLRequest(URL: fileURL)
-        let requestOperation = AFHTTPRequestOperation(request: urlRequest)
-        requestOperation.responseSerializer = AFImageResponseSerializer()
-        
-        requestOperation.setCompletionBlockWithSuccess({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
-            
-            self.lastScreenCaptureImageView.image = responseObject as? NSImage
-            self.needsUpdateConstraints = true
-           // self.updateConstraints()
-            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
-                
-        })
-        
-        requestOperation.start()
-    }
 }
 
 protocol PanelViewDelegate {

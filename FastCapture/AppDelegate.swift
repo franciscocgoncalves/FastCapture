@@ -92,6 +92,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, IMGSessionDelegate, NSUserNo
         DirectoryManager.sharedInstance.readDirectory(nil)
         
         IMGSession.anonymousSessionWithClientID(clientId, withDelegate: self)
+        
+        ScreenCapture.sharedInstance.run()
     }
     
     

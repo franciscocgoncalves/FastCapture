@@ -8,14 +8,16 @@
 
 import Cocoa
 
-class PanelViewController: NSViewController, PanelViewDelegate {
+class PanelViewController: NSViewController, PanelViewDelegate, ScreenCaptureDelegate {
     var panelView: PanelView?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ScreenCapture.sharedInstance.delegate = self
+        
         panelView?.delegate = self
-        panelView?.lastScreenCaptureURL = NSUserDefaults.standardUserDefaults().URLForKey("lastCapture")
+        addLastScreenCaptureURL(NSUserDefaults.standardUserDefaults().URLForKey("lastCapture")!)
 
     }
     
@@ -71,5 +73,33 @@ class PanelViewController: NSViewController, PanelViewDelegate {
     
     func quitFastCapture() {
         NSApplication.sharedApplication().terminate(nil)
+    }
+    
+    //MARK: - ScreenCapture Delegate
+    
+    func addLastScreenCaptureURL(fileURL: NSURL) {
+        panelView?.lastScreenCaptureURL = fileURL
+        downloadLastScreencapture(fileURL)
+    }
+    
+    func uploadingScreenCaptureProgress() {
+        //TODO: - implement progress
+    }
+    
+    func downloadLastScreencapture (fileURL: NSURL) {
+        let urlRequest = NSURLRequest(URL: fileURL)
+        let requestOperation = AFHTTPRequestOperation(request: urlRequest)
+        requestOperation.responseSerializer = AFImageResponseSerializer()
+        
+        requestOperation.setCompletionBlockWithSuccess({ (operation: AFHTTPRequestOperation!, responseObject: AnyObject!) -> Void in
+            
+            self.panelView?.lastScreenCaptureImageView.image = responseObject as? NSImage
+            self.panelView?.needsUpdateConstraints = true
+
+            }, failure: { (operation: AFHTTPRequestOperation!, error: NSError!) -> Void in
+                
+        })
+        
+        requestOperation.start()
     }
 }

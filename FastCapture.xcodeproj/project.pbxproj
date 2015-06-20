@@ -8,8 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		26A1034FC46574020FA021BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868F9CBD953A3D011E393F4D /* libPods.a */; };
+		5E4FE0381B34FC43009D0ECD /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E4FE0371B34FC43009D0ECD /* Keys.plist */; };
 		791354051AE56926003F2523 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791354041AE56926003F2523 /* DirectoryManager.swift */; };
-		79281D651AE7C6B000B4FD34 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79281D641AE7C6B000B4FD34 /* Keys.plist */; };
 		79281D671AE7C88500B4FD34 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79281D661AE7C88500B4FD34 /* Keys.swift */; };
 		793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261BB1AD2F02C00D62313 /* AppDelegate.swift */; };
 		793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 793261BD1AD2F02D00D62313 /* Images.xcassets */; };
@@ -42,8 +42,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E4FE0371B34FC43009D0ECD /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		791354041AE56926003F2523 /* DirectoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
-		79281D641AE7C6B000B4FD34 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		79281D661AE7C88500B4FD34 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		793261B61AD2F02A00D62313 /* FastCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		793261BA1AD2F02B00D62313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -143,7 +143,7 @@
 				796017A21AF43788001734C6 /* MainMenu.xib */,
 				793261EB1AD2F12000D62313 /* UserDefaults.plist */,
 				793261BA1AD2F02B00D62313 /* Info.plist */,
-				79281D641AE7C6B000B4FD34 /* Keys.plist */,
+				5E4FE0371B34FC43009D0ECD /* Keys.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -316,9 +316,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5E4FE0381B34FC43009D0ECD /* Keys.plist in Resources */,
 				793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */,
 				793261EC1AD2F12000D62313 /* UserDefaults.plist in Resources */,
-				79281D651AE7C6B000B4FD34 /* Keys.plist in Resources */,
 				796017A31AF43788001734C6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -641,6 +641,7 @@
 				796CE46B1B27716900B90A79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
