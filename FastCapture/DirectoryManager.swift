@@ -22,7 +22,7 @@ class DirectoryManager: NSObject {
         let folderDestinationURL: NSURL
         
         if userDefaultURL == nil {
-            if let picturesURL = NSFileManager.defaultManager().URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask).first as? NSURL {
+            if let picturesURL = NSFileManager.defaultManager().URLsForDirectory(.PicturesDirectory, inDomains: .UserDomainMask).first{
                 folderDestinationURL = picturesURL.URLByAppendingPathComponent("ScreenCapture")
             }
             else {
@@ -34,16 +34,17 @@ class DirectoryManager: NSObject {
             folderDestinationURL = userDefaultURL as! NSURL
         }
         
-        var err: NSErrorPointer = nil
         var isDir = ObjCBool(true)
         if !NSFileManager.defaultManager().fileExistsAtPath(folderDestinationURL.path!, isDirectory: &isDir) {
-            if NSFileManager.defaultManager().createDirectoryAtPath(folderDestinationURL.path!, withIntermediateDirectories: true, attributes: nil, error: err) {
-                println("sucessfuly created dir")
-            } else {
-                println("failed creating dir: \(err)")
+            do {
+                try NSFileManager.defaultManager().createDirectoryAtPath(folderDestinationURL.path!, withIntermediateDirectories: true, attributes: nil)
+                print("sucessfuly created dir")
+            } catch let error as NSError {
+                print("Error: \(error.domain)")
                 //should alert user
                 return
             }
+            
         }
 
         setDirectory(folderDestinationURL)
@@ -52,15 +53,20 @@ class DirectoryManager: NSObject {
     func readDirectory(cb: ((fileURL: NSURL) -> Void)?) {
         let fileManager = NSFileManager.defaultManager()
         let keys = NSArray(objects: NSURLNameKey)
-        let options = (NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants | NSDirectoryEnumerationOptions.SkipsHiddenFiles)
-        var error: NSError?
+        let options: NSDirectoryEnumerationOptions = ([NSDirectoryEnumerationOptions.SkipsSubdirectoryDescendants, NSDirectoryEnumerationOptions.SkipsHiddenFiles])
         
         //Get Contents of directory
         if(self.url == nil) {
             self.url = NSUserDefaults.standardUserDefaults().URLForKey("screenCaptureDirectory")
             
         }
-        let contents: NSArray? = fileManager.contentsOfDirectoryAtURL(self.url!, includingPropertiesForKeys: keys as? [AnyObject], options: options, error: &error)
+        var contents: [NSURL]?
+        do {
+            contents = try fileManager.contentsOfDirectoryAtURL(self.url!, includingPropertiesForKeys: keys as? [String], options: options)
+        } catch let error as NSError {
+            print(error)
+            contents = nil
+        }
         
         ScreenCapture.sharedInstance.addNewFilesToCache(contents, cb: cb)
     }

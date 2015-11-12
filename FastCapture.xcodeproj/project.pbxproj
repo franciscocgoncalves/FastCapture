@@ -8,22 +8,20 @@
 
 /* Begin PBXBuildFile section */
 		26A1034FC46574020FA021BA /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 868F9CBD953A3D011E393F4D /* libPods.a */; };
+		5E4FE0381B34FC43009D0ECD /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 5E4FE0371B34FC43009D0ECD /* Keys.plist */; };
 		791354051AE56926003F2523 /* DirectoryManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 791354041AE56926003F2523 /* DirectoryManager.swift */; };
-		79281D651AE7C6B000B4FD34 /* Keys.plist in Resources */ = {isa = PBXBuildFile; fileRef = 79281D641AE7C6B000B4FD34 /* Keys.plist */; };
 		79281D671AE7C88500B4FD34 /* Keys.swift in Sources */ = {isa = PBXBuildFile; fileRef = 79281D661AE7C88500B4FD34 /* Keys.swift */; };
 		793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261BB1AD2F02C00D62313 /* AppDelegate.swift */; };
 		793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 793261BD1AD2F02D00D62313 /* Images.xcassets */; };
-		793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793261BF1AD2F02E00D62313 /* MainMenu.xib */; };
 		793261CD1AD2F03000D62313 /* FastCaptureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261CC1AD2F03000D62313 /* FastCaptureTests.swift */; };
-		793261D71AD2F09800D62313 /* Panel.xib in Resources */ = {isa = PBXBuildFile; fileRef = 793261D61AD2F09800D62313 /* Panel.xib */; };
 		793261DB1AD2F0C100D62313 /* ScreenCapture.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261D91AD2F0C100D62313 /* ScreenCapture.swift */; };
 		793261DC1AD2F0C100D62313 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DA1AD2F0C100D62313 /* User.swift */; };
-		793261E21AD2F0FD00D62313 /* BackgroundView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DE1AD2F0FD00D62313 /* BackgroundView.swift */; };
-		793261E31AD2F0FD00D62313 /* Panel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261DF1AD2F0FD00D62313 /* Panel.swift */; };
-		793261E51AD2F0FD00D62313 /* StatusItemView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E11AD2F0FD00D62313 /* StatusItemView.swift */; };
-		793261E91AD2F11800D62313 /* MenubarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E71AD2F11800D62313 /* MenubarController.swift */; };
-		793261EA1AD2F11800D62313 /* PanelController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 793261E81AD2F11800D62313 /* PanelController.swift */; };
 		793261EC1AD2F12000D62313 /* UserDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 793261EB1AD2F12000D62313 /* UserDefaults.plist */; };
+		7960179F1AF43227001734C6 /* DummyControl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7960179E1AF43227001734C6 /* DummyControl.swift */; };
+		796017A11AF432F4001734C6 /* PanelViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796017A01AF432F4001734C6 /* PanelViewController.swift */; };
+		796017A31AF43788001734C6 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 796017A21AF43788001734C6 /* MainMenu.xib */; };
+		796CE46E1B27720000B90A79 /* PanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 796CE46D1B27720000B90A79 /* PanelView.swift */; };
+		798A35F31B1BD43900D71A86 /* AlbumListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 798A35F21B1BD43900D71A86 /* AlbumListViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -34,30 +32,36 @@
 			remoteGlobalIDString = 793261B51AD2F02A00D62313;
 			remoteInfo = FastCapture;
 		};
+		796CE4681B27716900B90A79 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 793261AE1AD2F02900D62313 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 793261B51AD2F02A00D62313;
+			remoteInfo = FastCapture;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5E4FE0371B34FC43009D0ECD /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		791354041AE56926003F2523 /* DirectoryManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DirectoryManager.swift; sourceTree = "<group>"; };
-		79281D641AE7C6B000B4FD34 /* Keys.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Keys.plist; sourceTree = "<group>"; };
 		79281D661AE7C88500B4FD34 /* Keys.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Keys.swift; sourceTree = "<group>"; };
 		793261B61AD2F02A00D62313 /* FastCapture.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FastCapture.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		793261BA1AD2F02B00D62313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		793261BB1AD2F02C00D62313 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		793261BD1AD2F02D00D62313 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
-		793261C01AD2F02E00D62313 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
 		793261C61AD2F02E00D62313 /* FastCaptureTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FastCaptureTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		793261CB1AD2F02F00D62313 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		793261CC1AD2F03000D62313 /* FastCaptureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FastCaptureTests.swift; sourceTree = "<group>"; };
-		793261D61AD2F09800D62313 /* Panel.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Panel.xib; sourceTree = "<group>"; };
 		793261D91AD2F0C100D62313 /* ScreenCapture.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ScreenCapture.swift; sourceTree = "<group>"; };
 		793261DA1AD2F0C100D62313 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
-		793261DE1AD2F0FD00D62313 /* BackgroundView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BackgroundView.swift; sourceTree = "<group>"; };
-		793261DF1AD2F0FD00D62313 /* Panel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Panel.swift; sourceTree = "<group>"; };
-		793261E11AD2F0FD00D62313 /* StatusItemView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusItemView.swift; sourceTree = "<group>"; };
-		793261E71AD2F11800D62313 /* MenubarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MenubarController.swift; sourceTree = "<group>"; };
-		793261E81AD2F11800D62313 /* PanelController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelController.swift; sourceTree = "<group>"; };
 		793261EB1AD2F12000D62313 /* UserDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = UserDefaults.plist; sourceTree = "<group>"; };
 		793261F11AD2F19200D62313 /* FastCapture-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FastCapture-Bridging-Header.h"; sourceTree = "<group>"; };
+		7960179E1AF43227001734C6 /* DummyControl.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DummyControl.swift; sourceTree = "<group>"; };
+		796017A01AF432F4001734C6 /* PanelViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelViewController.swift; sourceTree = "<group>"; };
+		796017A21AF43788001734C6 /* MainMenu.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MainMenu.xib; sourceTree = "<group>"; };
+		796CE4631B27716900B90A79 /* FastCapture UI Tests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "FastCapture UI Tests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		796CE46D1B27720000B90A79 /* PanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PanelView.swift; sourceTree = "<group>"; };
+		798A35F21B1BD43900D71A86 /* AlbumListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AlbumListViewController.swift; sourceTree = "<group>"; };
 		868F9CBD953A3D011E393F4D /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		8CE84CC38DCE99104B21554A /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		B28DD3729FB321E85FAEBA13 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
@@ -73,6 +77,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		793261C31AD2F02E00D62313 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		796CE4601B27716900B90A79 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -106,6 +117,7 @@
 			children = (
 				793261B61AD2F02A00D62313 /* FastCapture.app */,
 				793261C61AD2F02E00D62313 /* FastCaptureTests.xctest */,
+				796CE4631B27716900B90A79 /* FastCapture UI Tests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -118,8 +130,6 @@
 				793261E61AD2F0FF00D62313 /* Controllers */,
 				793261DD1AD2F0DC00D62313 /* Views */,
 				7981EC6C1ADDAD3700D18429 /* Resources */,
-				793261BF1AD2F02E00D62313 /* MainMenu.xib */,
-				793261D61AD2F09800D62313 /* Panel.xib */,
 				793261B91AD2F02B00D62313 /* Supporting Files */,
 				793261F11AD2F19200D62313 /* FastCapture-Bridging-Header.h */,
 				793261BD1AD2F02D00D62313 /* Images.xcassets */,
@@ -130,9 +140,10 @@
 		793261B91AD2F02B00D62313 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				796017A21AF43788001734C6 /* MainMenu.xib */,
 				793261EB1AD2F12000D62313 /* UserDefaults.plist */,
 				793261BA1AD2F02B00D62313 /* Info.plist */,
-				79281D641AE7C6B000B4FD34 /* Keys.plist */,
+				5E4FE0371B34FC43009D0ECD /* Keys.plist */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -165,9 +176,7 @@
 		793261DD1AD2F0DC00D62313 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				793261DE1AD2F0FD00D62313 /* BackgroundView.swift */,
-				793261DF1AD2F0FD00D62313 /* Panel.swift */,
-				793261E11AD2F0FD00D62313 /* StatusItemView.swift */,
+				796CE46D1B27720000B90A79 /* PanelView.swift */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -175,8 +184,9 @@
 		793261E61AD2F0FF00D62313 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				793261E71AD2F11800D62313 /* MenubarController.swift */,
-				793261E81AD2F11800D62313 /* PanelController.swift */,
+				796017A01AF432F4001734C6 /* PanelViewController.swift */,
+				798A35F21B1BD43900D71A86 /* AlbumListViewController.swift */,
+				7960179E1AF43227001734C6 /* DummyControl.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -240,13 +250,32 @@
 			productReference = 793261C61AD2F02E00D62313 /* FastCaptureTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		796CE4621B27716900B90A79 /* FastCapture UI Tests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 796CE46C1B27716900B90A79 /* Build configuration list for PBXNativeTarget "FastCapture UI Tests" */;
+			buildPhases = (
+				796CE45F1B27716900B90A79 /* Sources */,
+				796CE4601B27716900B90A79 /* Frameworks */,
+				796CE4611B27716900B90A79 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				796CE4691B27716900B90A79 /* PBXTargetDependency */,
+			);
+			name = "FastCapture UI Tests";
+			productName = "FastCapture UI Tests";
+			productReference = 796CE4631B27716900B90A79 /* FastCapture UI Tests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		793261AE1AD2F02900D62313 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastSwiftUpdateCheck = 0700;
+				LastUpgradeCheck = 0700;
 				ORGANIZATIONNAME = "Francisco Gonçalves";
 				TargetAttributes = {
 					793261B51AD2F02A00D62313 = {
@@ -254,6 +283,10 @@
 					};
 					793261C51AD2F02E00D62313 = {
 						CreatedOnToolsVersion = 6.3;
+						TestTargetID = 793261B51AD2F02A00D62313;
+					};
+					796CE4621B27716900B90A79 = {
+						CreatedOnToolsVersion = 7.0;
 						TestTargetID = 793261B51AD2F02A00D62313;
 					};
 				};
@@ -273,6 +306,7 @@
 			targets = (
 				793261B51AD2F02A00D62313 /* FastCapture */,
 				793261C51AD2F02E00D62313 /* FastCaptureTests */,
+				796CE4621B27716900B90A79 /* FastCapture UI Tests */,
 			);
 		};
 /* End PBXProject section */
@@ -282,15 +316,21 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				793261D71AD2F09800D62313 /* Panel.xib in Resources */,
+				5E4FE0381B34FC43009D0ECD /* Keys.plist in Resources */,
 				793261BE1AD2F02D00D62313 /* Images.xcassets in Resources */,
-				793261C11AD2F02E00D62313 /* MainMenu.xib in Resources */,
 				793261EC1AD2F12000D62313 /* UserDefaults.plist in Resources */,
-				79281D651AE7C6B000B4FD34 /* Keys.plist in Resources */,
+				796017A31AF43788001734C6 /* MainMenu.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		793261C41AD2F02E00D62313 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		796CE4611B27716900B90A79 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -337,16 +377,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				793261E91AD2F11800D62313 /* MenubarController.swift in Sources */,
 				793261DB1AD2F0C100D62313 /* ScreenCapture.swift in Sources */,
-				793261E31AD2F0FD00D62313 /* Panel.swift in Sources */,
 				791354051AE56926003F2523 /* DirectoryManager.swift in Sources */,
-				793261EA1AD2F11800D62313 /* PanelController.swift in Sources */,
-				793261E51AD2F0FD00D62313 /* StatusItemView.swift in Sources */,
+				7960179F1AF43227001734C6 /* DummyControl.swift in Sources */,
+				796CE46E1B27720000B90A79 /* PanelView.swift in Sources */,
+				798A35F31B1BD43900D71A86 /* AlbumListViewController.swift in Sources */,
 				793261BC1AD2F02C00D62313 /* AppDelegate.swift in Sources */,
-				793261E21AD2F0FD00D62313 /* BackgroundView.swift in Sources */,
 				793261DC1AD2F0C100D62313 /* User.swift in Sources */,
 				79281D671AE7C88500B4FD34 /* Keys.swift in Sources */,
+				796017A11AF432F4001734C6 /* PanelViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -358,6 +397,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		796CE45F1B27716900B90A79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -366,18 +412,12 @@
 			target = 793261B51AD2F02A00D62313 /* FastCapture */;
 			targetProxy = 793261C71AD2F02E00D62313 /* PBXContainerItemProxy */;
 		};
-/* End PBXTargetDependency section */
-
-/* Begin PBXVariantGroup section */
-		793261BF1AD2F02E00D62313 /* MainMenu.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				793261C01AD2F02E00D62313 /* Base */,
-			);
-			name = MainMenu.xib;
-			sourceTree = "<group>";
+		796CE4691B27716900B90A79 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 793261B51AD2F02A00D62313 /* FastCapture */;
+			targetProxy = 796CE4681B27716900B90A79 /* PBXContainerItemProxy */;
 		};
-/* End PBXVariantGroup section */
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		793261CE1AD2F03000D62313 /* Debug */ = {
@@ -401,6 +441,7 @@
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -473,6 +514,7 @@
 				);
 				INFOPLIST_FILE = FastCapture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.franciscogoncalves.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "FastCapture/FastCapture-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -492,6 +534,7 @@
 				);
 				INFOPLIST_FILE = FastCapture/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.franciscogoncalves.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = "FastCapture/FastCapture-Bridging-Header.h";
 			};
@@ -512,6 +555,7 @@
 				);
 				INFOPLIST_FILE = FastCaptureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.franciscogoncalves.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FastCapture.app/Contents/MacOS/FastCapture";
 			};
@@ -528,8 +572,35 @@
 				);
 				INFOPLIST_FILE = FastCaptureTests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "me.franciscogoncalves.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/FastCapture.app/Contents/MacOS/FastCapture";
+			};
+			name = Release;
+		};
+		796CE46A1B27716900B90A79 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "FastCapture UI Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.franciscocsg.FastCapture-UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FastCapture;
+				USES_XCTRUNNER = YES;
+			};
+			name = Debug;
+		};
+		796CE46B1B27716900B90A79 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = "FastCapture UI Tests/Info.plist";
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.franciscocsg.FastCapture-UI-Tests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_TARGET_NAME = FastCapture;
+				USES_XCTRUNNER = YES;
 			};
 			name = Release;
 		};
@@ -559,6 +630,15 @@
 			buildConfigurations = (
 				793261D41AD2F03000D62313 /* Debug */,
 				793261D51AD2F03000D62313 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		796CE46C1B27716900B90A79 /* Build configuration list for PBXNativeTarget "FastCapture UI Tests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				796CE46A1B27716900B90A79 /* Debug */,
+				796CE46B1B27716900B90A79 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

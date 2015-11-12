@@ -22,7 +22,7 @@ class User: NSObject {
     func login() {
         let delegate = NSApplication.sharedApplication().delegate as! IMGSessionDelegate
         
-        let imgSession = IMGSession.authenticatedSessionWithClientID(Keys().authenticatedClientId, secret: Keys().authenticatedSecret, authType: IMGAuthType.CodeAuth, withDelegate: delegate)
+        IMGSession.authenticatedSessionWithClientID(Keys().authenticatedClientId, secret: Keys().authenticatedSecret, authType: IMGAuthType.CodeAuth, withDelegate: delegate)
         
         IMGSession.sharedInstance().authenticate()
     }
