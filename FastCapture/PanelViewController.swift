@@ -75,6 +75,10 @@ class PanelViewController: NSViewController, PanelViewDelegate, ScreenCaptureDel
         NSApplication.sharedApplication().terminate(nil)
     }
     
+    func isLoggedIn() -> Bool {
+        return User.sharedInstance.isLoggedIn
+    }
+    
     //MARK: - ScreenCapture Delegate
     
     func addLastScreenCaptureURL(fileURL: NSURL) {

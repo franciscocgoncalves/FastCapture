@@ -38,7 +38,7 @@ class DirectoryManager: NSObject {
         if !NSFileManager.defaultManager().fileExistsAtPath(folderDestinationURL.path!, isDirectory: &isDir) {
             do {
                 try NSFileManager.defaultManager().createDirectoryAtPath(folderDestinationURL.path!, withIntermediateDirectories: true, attributes: nil)
-                print("sucessfuly created dir", appendNewline: false)
+                print("sucessfuly created dir")
             } catch let error as NSError {
                 print("Error: \(error.domain)")
                 //should alert user

@@ -152,6 +152,22 @@ class PanelView: NSView {
         return _albumsListButton!
     }
     
+    var _loginButton: NSButton?
+    var loginButton: NSButton {
+        if (_loginButton == nil) {
+            _loginButton = NSButton(forAutoLayout: ())
+            
+            _loginButton!.action = Selector("loginAction")
+            _loginButton!.target = self
+            
+            _loginButton!.stringValue = "Login"
+            
+            _loginButton?.bordered = false
+            _loginButton?.setButtonType(.MomentaryChangeButton)
+        }
+        return _albumsListButton!
+    }
+    
     var _settingsButton: NSButton?
     var settingsButton: NSButton {
         if (_settingsButton == nil) {
@@ -212,8 +228,24 @@ class PanelView: NSView {
         bottomPlaceholderView.autoPinEdgeToSuperviewEdge(.Right)
         
         drawLineBottom()
-        drawAlbumsListButton()
+        
         drawSettingsButton()
+
+        guard let delegate = delegate else {
+            return
+        }
+        
+        if delegate.isLoggedIn() {
+            self.drawLoginButton()
+        }
+        else {
+            self.drawAlbumsListButton()
+        }
+
+    }
+    
+    func drawLoginButton () {
+        
     }
     
     func drawAlbumsListButton () {
@@ -313,7 +345,7 @@ class PanelView: NSView {
         copyLastScreenCaptureButton.autoAlignAxis(.Horizontal, toSameAxisOfView: lastScreenCaptureLabel)
     }
     
-    func login () {
+    func loginAction () {
         delegate?.login()
     }
 
@@ -351,6 +383,7 @@ class PanelView: NSView {
 protocol PanelViewDelegate {
     func copyLastScreenCaptureAction()
     func albumListAction()
+    func isLoggedIn() -> Bool
     func login()
     func settings()
     func donate()
